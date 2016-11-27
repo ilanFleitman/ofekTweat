@@ -1,0 +1,48 @@
+.filterr {
+    display: inline-block;
+}
+
+#wrapper {
+    padding-top: 1%;
+}
+
+.freind {
+    border: groove;
+    border-bottom-color: aquamarine;
+    width: 12%;
+    padding-left: 2%;
+    margin-left: 2%;
+    margin-top: 2%;
+    display: inline-block;
+    border-radius: 10%;
+}
+
+#aside, #articale {
+    display: inline-block;
+}
+
+#freind8, #freind9 {
+    border: groove;
+    border-bottom-color: aquamarine;
+    width: 50%;
+    padding-left: 26%;
+    margin-left: 8%;
+    margin-top: 2%;
+    border-radius: 10%;
+}
+
+#aside {
+    width: 28%;
+    border: groove;
+    border-bottom-color: aquamarine;
+    border-radius: 12%;
+    padding-left: %2;
+}
+
+#articale {
+    width: 70%;
+}
+
+aside h1 {
+    margin-left: 15%;
+}

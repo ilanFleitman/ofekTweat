@@ -1,0 +1,35 @@
+#text-area {
+    margin-top: 5%;
+}
+
+.messege {
+    width: 25%;
+    height: 25%;
+}
+
+.avatarpic {
+    width: 100%;
+    height: 100%;
+}
+
+#messege1 div {
+    display: inline-block;
+}
+
+#messege2 div {
+    display: inline-block;
+}
+
+#messege3 div {
+    display: inline-block;
+}
+
+#messege4 div {
+    display: inline-block;
+}
+
+#messege5 div {
+    display: inline-block;
+}
+
+
