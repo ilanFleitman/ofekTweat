@@ -19,6 +19,7 @@
     background-color: blue;
     border: none;
     font-size: 106%;
+    color: white;
 }
 
 #headline-text:hover {
@@ -64,5 +65,28 @@
 
 #nav button:hover {
     height: 36px;
-    background-color: aquamarine;
+    background-color: #22d1ff;
+}
+
+a:link {
+    color: white;
+}
+
+/* visited link */
+a:visited {
+    color: white;
+}
+
+/* mouse over link */
+a:hover {
+    color: white;
+}
+
+/* selected link */
+a:active {
+    color: white;
+}
+
+a {
+    text-decoration: none;
 }
