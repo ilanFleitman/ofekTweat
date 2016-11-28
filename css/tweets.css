@@ -11,14 +11,14 @@
 
 .messege div{
     display: inline-block;
-    font-size: 1vw;
     vertical-align: middle;
+    font-size: 1vw;
     margin-top: 1%;
 }
 
-#text-area-div {
+#align-verticly {
     display: inline-block;
-    vertical-align: middle
+    vertical-align: middle;
 }
 
 #text-area-button {
