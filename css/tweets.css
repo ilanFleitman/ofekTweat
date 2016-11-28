@@ -15,3 +15,12 @@
     vertical-align: middle;
     margin-top: 1%;
 }
+
+#text-area-div {
+    display: inline-block;
+    vertical-align: middle
+}
+
+#text-area-button {
+    display: inline-block;
+}

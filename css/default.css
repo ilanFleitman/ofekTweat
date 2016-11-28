@@ -67,3 +67,13 @@ a:visited {
 a {
     text-decoration: none;
 }
+
+#nav-left-side {
+    float: left;
+    display: inline-block;
+}
+
+#nav-right-side {
+    float: right;
+    display: inline-block;
+}
