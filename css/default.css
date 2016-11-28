@@ -6,7 +6,6 @@
     font-size: 1vw;
 }
 
-
 #ofek-logo {
     width: 2vw;
     vertical-align: middle;
@@ -18,37 +17,15 @@
     font-size: 1vw;
 }
 
-#headline-text {
-    background-color: #0a64eb;
-    border: none;
-    height: 3vw;
-}
-
-#headline-text:hover {
-    background-color: aquamarine;
-}
-
-#headline-logo {
-    display: inline-block;
-}
-
 .nowrap {
     white-space: nowrap;
 }
 
-#headline-users {
-    background-color: #0a64eb;
-    border: none;
-    height: 3vw;
+#headline-twitter {
+    font-size: 1.5vw;
 }
 
-#headline-sign-up {
-    background-color: #0a64eb;
-    border: none;
-    height: 3vw;
-}
-
-#headline-sign-in {
+.headline-link {
     background-color: #0a64eb;
     border: none;
     height: 3vw;
@@ -59,7 +36,6 @@
     background-color: #22d1ff;
 }
 
-/* visited link */
 a:visited {
     color: white;
 }
@@ -75,5 +51,9 @@ a {
 
 #nav-right-side {
     float: right;
+    display: inline-block;
+}
+
+.align-inline-block {
     display: inline-block;
 }

@@ -29,10 +29,6 @@
     border: 0.25vw solid #cecece;
 }
 
-#aside, #articale {
-    display: inline-block;
-}
-
 #freind8, #freind9 {
     text-align:center;
     width: 8vw;
