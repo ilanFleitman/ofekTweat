@@ -21,6 +21,10 @@
     white-space: nowrap;
 }
 
+.add-text-shedow {
+    text-shadow: 1px 1px 1px black;
+}
+
 #headline-twitter {
     font-size: 1.5vw;
 }
