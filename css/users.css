@@ -1,17 +1,17 @@
 #text-area {
     margin-top: 1%;
     display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
+    padding-top: 5%;
 }
 
 .avatarpic {
-    width: 100%;
-    height: 100%;
+    width: 3vw;
+    height: 3vw;
 }
 
 .messege div{
     display: inline-block;
-    font-size: 12px;
+    font-size: 1vw;
     vertical-align: middle;
+    margin-top: 1%;
 }

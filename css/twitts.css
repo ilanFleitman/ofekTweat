@@ -5,28 +5,28 @@
 #wrapper {
     width: 75%;
     margin: auto;
-    padding-top: 1%;
-    font-size: 12px;
+    padding-top: 1vw;
+    font-size: 1vw;
 }
 
 .freind {
     text-align: center;
-    width: 16%;
-    height: 120px;
-    margin-top: 1%;
-    padding-top: 1%;
+    width: 8vw;
+    height: 9vw;
+    margin-top: 0.5vw;
+    padding-top: 2vw;
     display: inline-block;
-    line-height: 25px;
-    border: 3px solid #e6e6e6;
-    border-radius: 4px;
+    line-height: 2.3vw;
+    border: 0.25vw solid #e6e6e6;
+    border-radius: 0.33vw;
 }
 
 .freind:hover {
-    border: 3px solid #cecece;
+    border: 0.25vw solid #cecece;
 }
 
 #freind8:hover , #freind9:hover {
-    border: 3px solid #cecece;
+    border: 0.25vw solid #cecece;
 }
 
 #aside, #articale {
@@ -35,35 +35,40 @@
 
 #freind8, #freind9 {
     text-align:center;
-    width: 50%;
-    margin-left: 25%;
-    padding-top: 2%;
-    height: 122px;
-    line-height: 0px;
-    border: 3px solid #e6e6e6;
-    border-radius: 4px;
+    width: 8vw;
+    margin-left: 3.2vw;
+    padding-top: 1vw;
+    height: 9vw;
+    border: 0.25vw solid #e6e6e6;
+    border-radius: 0.33vw;
 }
 
 #aside {
-    width: 20%;
-    line-height: 3px;
-    padding-bottom: 2%;
+    width: 15vw;
+    height: 23vw;
+    line-height: 0.5vw;
+    padding-bottom: 2vw;
     margin: auto;
-    border: 3px solid #e6e6e6;
-    border-radius: 4px;
+    border: 0.25vw solid #e6e6e6;
+    border-radius: 0.33vw;
 }
 
 #articale {
-    width: 70%;
+    width: 50vw;
 
 }
 
 aside h1 {
     margin-left: 27%;
-    font-size: 20px;
+    font-size: 1.2vw;
 
 }
 
 aside div {
-    line-height: 20px;
+    line-height: 1.2vw;
+}
+
+.avatarpic {
+    width: 3vw;
+    height: 3vw;
 }
