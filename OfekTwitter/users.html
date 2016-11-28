@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>users</title>
+    <title>twitts</title>
     <link rel="stylesheet" type="text/css" href="../css/normalize.css">
     <link rel="stylesheet" type="text/css" href="../css/default.css">
     <link rel="stylesheet" type="text/css" href="../css/users.css">
@@ -11,75 +11,144 @@
 <div id="container">
     <header>
         <div id="nav">
-            <div style="float: left;display: inline-block">
+            <div style="float: left;display: inline-block;">
                 <img src="../images/ofek.png" id="ofek-logo">
-                <button id="headline-text"><a class="nowrap" href="users.html">ofek twitter</a></button>
+                <button id="headline-text"><a class="nowrap" href="tweets.html">ofek twitter</a></button>
             </div>
             <div style="float: right;display: inline-block">
-                <button id="headline-users"><a class="nowrap" href="twitts.html">users</a></button>
-                <button id="headline-sign-up"><a class="nowrap" href="users.html">sign up</a></button>
-                <button id="headline-sign-in"><a class="nowrap" href="users.html">sign in</a></button>
+                <button id="headline-users"><a class="nowrap" href="users.html">users</a></button>
+                <button id="headline-sign-up"><a class="nowrap" href="tweets.html">sign up</a></button>
+                <button id="headline-sign-in"><a class="nowrap" href="tweets.html">sign in</a></button>
             </div>
         </div>
     </header>
     <section>
-        <article>
-            <div id="wrapper">
-                <div style="display: inline-block;vertical-align: middle">
-                    <textarea id="text-area"  rows="3" cols="70" placeholder="tweet text...."></textarea>
+        <div id="wrapper">
+            <div class="filterr" style="display: inline-block">
+                Filter by <input id="filter" type="text" placeholder="user name"/>
+            </div>
+            <div class="filterr" style="display: inline-block">
+                <button id="ok">ok</button>
+            </div>
+            <div>
+                <div id="articale">
+                    <article>
+                        <div style="display: inline-block; width: 50vw">
+                            <div id="freind1" class="freind">
+                                <div>
+                                    <img class="avatarpic" src="../images/useravatar.png">
+                                </div>
+                                <div>
+                                    <button>follow</button>
+                                </div>
+                                <div>
+                                    Marty McFly
+                                </div>
+                            </div>
+                            <div id="freind2" class="freind">
+                                <div>
+                                    <img class="avatarpic" src="../images/useravatar.png">
+                                </div>
+                                <div>
+                                    <button>follow</button>
+                                </div>
+                                <div>
+                                    James Bond
+                                </div>
+                            </div>
+                            <div id="freind3" class="freind">
+                                <div>
+                                    <img class="avatarpic" src="../images/useravatar.png">
+                                </div>
+                                <div>
+                                    <button>unfollow</button>
+                                </div>
+                                <div>
+                                    Janis Joplin
+                                </div>
+                            </div>
+                            <div id="freind4" class="freind">
+                                <div>
+                                    <img class="avatarpic" src="../images/useravatar.png">
+                                </div>
+                                <div>
+                                    <button>follow</button>
+                                </div>
+                                <div>
+                                    Mark Twain
+                                </div>
+                            </div>
+                            <div id="freind5" class="freind">
+                                <div>
+                                    <img class="avatarpic" src="../images/useravatar.png">
+                                </div>
+                                <div>
+                                    <button>unfollow</button>
+                                </div>
+                                <div>
+                                    Albert Einstein
+                                </div>
+                            </div>
+                            <div id="freind6" class="freind">
+                                <div>
+                                    <img class="avatarpic" src="../images/useravatar.png">
+                                </div>
+                                <div>
+                                    <button>follow</button>
+                                </div>
+                                <div>
+                                    Frodo
+                                </div>
+                            </div>
+                            <div id="freind7" class="freind">
+                                <div>
+                                    <img class="avatarpic" src="../images/useravatar.png">
+                                </div>
+                                <div>
+                                    <button>follow</button>
+                                </div>
+                                <div>
+                                    Bill Gates
+                                </div>
+                            </div>
+                        </div>
+                    </article>
                 </div>
-                <div style="display: inline-block">
-                    <button>publish</button>
-                </div>
-                <div id="messege1" class="messege">
-                    <div>
-                        <img class="avatarpic" src="../images/useravatar.png">
-                    </div>
-                    <div>
-                        <b>James Bond says:</b><br>
-                        Blabla bla...
-                    </div>
-                </div>
-                <div id="messege2" class="messege">
-                    <div>
-                        <img class="avatarpic" src="../images/useravatar.png">
-                    </div>
-                    <div>
-                        <b>James bond says:</b><br>
-                        Bond, James bond
-                    </div>
-                </div>
-                <div id="messege3" class="messege">
-                    <div>
-                        <img class="avatarpic" src="../images/useravatar.png">
-                    </div>
-                    <div>
-                        <b>Albert Einstein says:</b><br>
-                        E = mc^2
-                    </div>
-                </div>
-                <div id="messege4" class="messege">
-                    <div>
-                        <img class="avatarpic" src="../images/useravatar.png">
-                    </div>
-                    <div>
-                        <b>Bill Gates says:</b><br>
-                        I think 64 bytes should be enough for everyone
-                    </div>
-                </div>
-                <div id="messege5" class="messege">
-                    <div>
-                        <img class="avatarpic" src="../images/useravatar.png">
-                    </div>
-                    <div>
-                        <b>Frodo says:</b><br>
-                        My Precious
-                    </div>
+                <div id="aside">
+                    <aside>
+                        <h1>Followees</h1>
+                        <div id="freind8">
+                            <div>
+                                <img class="avatarpic" src="../images/useravatar.png">
+                            </div>
+                            <br>
+                            <div>
+                                <button>unfollow</button>
+                            </div>
+                            <br>
+                            <div>
+                                Albert Einstein
+                            </div>
+                        </div>
+                        <br>
+                        <div id="freind9">
+                            <div>
+                                <img class="avatarpic" src="../images/useravatar.png">
+                            </div>
+                            <br>
+                            <div>
+                                <button>unfollow</button>
+                            </div>
+                            <br>
+                            <div>
+                                Janis Joplin
+                            </div>
+                        </div>
+                    </aside>
                 </div>
             </div>
-        </article>
+        </div>
     </section>
-
 </div>
 </body>
 </html>

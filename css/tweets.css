@@ -1,0 +1,17 @@
+#text-area {
+    margin-top: 1%;
+    display: inline-block;
+    padding-top: 5%;
+}
+
+.avatarpic {
+    width: 3vw;
+    height: 3vw;
+}
+
+.messege div{
+    display: inline-block;
+    font-size: 1vw;
+    vertical-align: middle;
+    margin-top: 1%;
+}
