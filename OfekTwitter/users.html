@@ -11,17 +11,26 @@
 <div id="container">
     <header>
         <div id="nav">
-            <img src="../images/ofek.png" id="ofek-logo">
-            <button id="headline-text"><a class="nowrap" href="users.html">ofek twitter</a></button>
-            <button id="headline-users"><a class="nowrap" href="twitts.html">users</a></button>
-            <button id="headline-sign-up"><a class="nowrap" href="users.html">sign up</a></button>
-            <button id="headline-sign-in"><a class="nowrap" href="users.html">sign in</a></button>
+            <div style="float: left;display: inline-block">
+                <img src="../images/ofek.png" id="ofek-logo">
+                <button id="headline-text"><a class="nowrap" href="users.html">ofek twitter</a></button>
+            </div>
+            <div style="float: right;display: inline-block">
+                <button id="headline-users"><a class="nowrap" href="twitts.html">users</a></button>
+                <button id="headline-sign-up"><a class="nowrap" href="users.html">sign up</a></button>
+                <button id="headline-sign-in"><a class="nowrap" href="users.html">sign in</a></button>
+            </div>
         </div>
     </header>
     <section>
         <article>
             <div id="wrapper">
-                <textarea id="text-area" rows="6" cols="70" placeholder="tweet text...."></textarea>
+                <div style="display: inline-block;vertical-align: middle">
+                    <textarea id="text-area"  rows="6" cols="70" placeholder="tweet text...." style="text-align: justify"></textarea>
+                </div>
+                <div style="display: inline-block">
+                    <button>publish</button>
+                </div>
                 <div id="messege1" class="messege">
                     <div>
                         <img class="avatarpic" src="../images/useravatar.png">
@@ -31,7 +40,7 @@
                         Blabla bla...
                     </div>
                 </div>
-                <div id="messege2" name="messege">
+                <div id="messege2" class="messege">
                     <div>
                         <img class="avatarpic" src="../images/useravatar.png">
                     </div>
@@ -40,7 +49,7 @@
                         Bond, James bond
                     </div>
                 </div>
-                <div id="messege3" name="messege">
+                <div id="messege3" class="messege">
                     <div>
                         <img class="avatarpic" src="../images/useravatar.png">
                     </div>
@@ -49,7 +58,7 @@
                         E = mc^2
                     </div>
                 </div>
-                <div id="messege4" name="messege">
+                <div id="messege4" class="messege">
                     <div>
                         <img class="avatarpic" src="../images/useravatar.png">
                     </div>
@@ -58,7 +67,7 @@
                         I think 64 bytes should be enough for everyone
                     </div>
                 </div>
-                <div id="messege5" name="messege">
+                <div id="messege5" class="messege">
                     <div>
                         <img class="avatarpic" src="../images/useravatar.png">
                     </div>

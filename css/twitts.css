@@ -3,18 +3,30 @@
 }
 
 #wrapper {
+    width: 75%;
+    margin: auto;
     padding-top: 1%;
+    font-size: 12px;
 }
 
 .freind {
-    border: groove;
-    border-bottom-color: aquamarine;
-    width: 12%;
-    padding-left: 2%;
-    margin-left: 2%;
-    margin-top: 2%;
+    text-align: center;
+    width: 16%;
+    height: 120px;
+    margin-top: 1%;
+    padding-top: 1%;
     display: inline-block;
-    border-radius: 10%;
+    line-height: 25px;
+    border: 3px solid #e6e6e6;
+    border-radius: 4px;
+}
+
+.freind:hover {
+    border: 3px solid #cecece;
+}
+
+#freind8:hover , #freind9:hover {
+    border: 3px solid #cecece;
 }
 
 #aside, #articale {
@@ -22,26 +34,36 @@
 }
 
 #freind8, #freind9 {
-    border: groove;
-    border-bottom-color: aquamarine;
+    text-align:center;
     width: 50%;
-    padding-left: 26%;
-    margin-left: 8%;
-    margin-top: 2%;
-    border-radius: 10%;
+    margin-left: 25%;
+    padding-top: 2%;
+    height: 122px;
+    line-height: 0px;
+    border: 3px solid #e6e6e6;
+    border-radius: 4px;
 }
 
 #aside {
-    width: 28%;
-    border: groove;
-    border-bottom-color: aquamarine;
-    border-radius: 12%;
+    width: 20%;
+    line-height: 3px;
+    padding-bottom: 2%;
+    margin: auto;
+    border: 3px solid #e6e6e6;
+    border-radius: 4px;
 }
 
 #articale {
     width: 70%;
+
 }
 
 aside h1 {
-    margin-left: 15%;
+    margin-left: 27%;
+    font-size: 20px;
+
+}
+
+aside div {
+    line-height: 20px;
 }

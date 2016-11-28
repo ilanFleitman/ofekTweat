@@ -1,5 +1,8 @@
 #text-area {
-    margin-top: 5%;
+    margin-top: 1%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .avatarpic {
@@ -7,24 +10,8 @@
     height: 100%;
 }
 
-#messege1 div {
+.messege div{
     display: inline-block;
+    font-size: 12px;
+    vertical-align: middle;
 }
-
-#messege2 div {
-    display: inline-block;
-}
-
-#messege3 div {
-    display: inline-block;
-}
-
-#messege4 div {
-    display: inline-block;
-}
-
-#messege5 div {
-    display: inline-block;
-}
-
-
