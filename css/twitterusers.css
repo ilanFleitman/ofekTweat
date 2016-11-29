@@ -64,10 +64,9 @@
 
 }
 
-aside h1 {
-    margin-left: 27%;
-    font-size: 1.2vw;
-
+aside h2 {
+    margin-left: 4vw;
+    font-size: 1.5vw;
 }
 
 aside div {
@@ -81,6 +80,6 @@ aside div {
 
 #articale-inside {
     width: 50vw;
-    margin-bottom: 1.5vw;
+    margin-bottom: 2.5vw;
     float: left;
 }
