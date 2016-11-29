@@ -34,6 +34,7 @@
     background-color: #0a64eb;
     border: none;
     height: 4vw;
+    font-size: 1vw;
 }
 
 #nav button:hover {
