@@ -9,29 +9,23 @@
     font-size: 1vw;
 }
 
+#wrapper-all {
+    padding-bottom: 1vw;
+}
+
 .freind {
     text-align: center;
-    float: left;
-    width: 9vw;
-    height: 8vw;
-    margin-top: 0.5vw;
-    margin-left: 0.5vw;
-    padding-top: 1vw;
+   /* width: 9vw;
+    height: 8vw;*/
     padding-bottom: 1.5vw;
     display: inline-block;
     line-height: 2.3vw;
-    border: 0.25vw solid #e6e6e6;
+   /* border: 0.25vw solid #e6e6e6; */
     border-radius: 0.33vw;
     font-size: 1vw;
+    margin-bottom: 0px !important;
 }
 
-.freind:hover {
-    border: 0.25vw solid #cecece;
-}
-
-.freind button {
-    font-size: 1vw;
-}
 
 #freind8:hover , #freind9:hover {
     border: 0.25vw solid #cecece;
@@ -39,34 +33,22 @@
 
 #freind8, #freind9 {
     text-align:center;
-    width: 8vw;
-    margin-left: 3.2vw;
-    padding-top: 1vw;
     padding-bottom: 1vw;
-    height: 9vw;
-    border: 0.25vw solid #e6e6e6;
+  /*  border: 0.25vw solid #e6e6e6;*/
     border-radius: 0.33vw;
     font-size: 1vw;
 }
 
 #aside {
-    width: 15vw;
-    height: 25vw;
     line-height: 0.5vw;
     padding-bottom: 2vw;
-    margin-left: 8vw;
     border: 0.25vw solid #e6e6e6;
     border-radius: 0.33vw;
 }
 
-#articale {
-    width: 50vw;
-
-}
-
 aside h2 {
-    margin-left: 4vw;
-    font-size: 1.5vw;
+    margin-left: 0.5vw;
+    font-size: 2.5vw;
 }
 
 aside div {
@@ -74,8 +56,8 @@ aside div {
 }
 
 .avatarpic {
-    width: 3.8vw;
-    height: 3.8vw;
+   /* width: 3vw;
+    height: 3vw;*/
 }
 
 #articale-inside {

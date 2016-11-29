@@ -5,81 +5,98 @@
     <title>tweets</title>
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../css/default.css">
-    <link rel="stylesheet" type="text/css" href="../css/users.css">
+    <link rel="stylesheet" type="text/css" href="../css/tweets.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<div id="container">
-    <header>
-        <div id="nav">
-            <div id="nav-left-side">
-                <img src="../images/ofek.png" id="ofek-logo">
-                <button id="headline-twitter" class="headline-link add-text-shedow"><a href="tweets.html">Ofek Twitter</a></button>
-            </div>
-            <div id="nav-right-side">
-                <button class="headline-link add-text-shedow"><a  href="users.html">Users</a></button>
-                <button class="headline-link add-text-shedow"><a  href="tweets.html">Sign up</a></button>
-                <button class="headline-link add-text-shedow"><a  href="tweets.html">Sign in</a></button>
+<div>
+    <header class="navbar navbar-default testnav navbar-color">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="row">
+                <div class="navbar-left col-md-2 move-nav">
+                    <img src="../images/ofek.png" id="ofek-logo">
+                    <button id="headline-twitter" class="headline-link add-text-shedow"><a href="tweets.html">Ofek
+                        Twitter</a></button>
+                </div>
+                <div class="navbar-left col-md-offset-7">
+                    <button class="headline-link add-text-shedow"><a href="users.html">Users</a></button>
+                    <button class="headline-link add-text-shedow"><a href="tweets.html">Sign up</a></button>
+                    <button class="headline-link add-text-shedow"><a href="tweets.html">Sign in</a></button>
+                </div>
             </div>
         </div>
     </header>
     <section>
-        <article>
-            <div id="wrapper">
-                <div id="align-verticly">
-                    <textarea id="text-area"  rows="3" cols="70" placeholder="tweet text...."></textarea>
+        <article class="container">
+            <div class="row">
+                <div class="col-md-12">
+                <textarea id="text-area" class="form-control col-md-11" rows="3" cols="75"
+                          placeholder="tweet text...."></textarea>
                 </div>
-                <div id="text-area-button">
-                    <button>publish</button>
-                </div>
-                <div id="messege1" class="messege">
-                    <div>
-                        <img class="avatarpic" src="../images/useravatar.png">
+            </div>
+            <div class="row">
+                <button class="btn btn-md btn-primary pull-right">publish</button>
+            </div>
+            <div class="row">
+                <img class="col-md-1 avatarpic" src="../images/useravatar.png">
+                <div class="col-md-2">
+                    <div class="row">
+                        <label><b>James Bond says:</b><label>
                     </div>
-                    <div>
-                        <b>James Bond says:</b><br>
+                    <div class="row">
                         Blabla bla...
                     </div>
                 </div>
-                <div id="messege2" class="messege">
-                    <div>
-                        <img class="avatarpic" src="../images/useravatar.png">
+            </div>
+            <div class="row">
+                <img class="col-md-1 avatarpic" src="../images/useravatar.png">
+                <div class="col-md-2">
+                    <div class="row">
+                        <label><b>James Bond says:</b><label>
                     </div>
-                    <div>
-                        <b>James bond says:</b><br>
-                        Bond, James bond
+                    <div class="row">
+                        Bond, James
                     </div>
                 </div>
-                <div id="messege3" class="messege">
-                    <div>
-                        <img class="avatarpic" src="../images/useravatar.png">
+            </div>
+            <div class="row">
+                <img class="col-md-1 avatarpic" src="../images/useravatar.png">
+                <div class="col-md-2">
+                    <div class="row">
+                        <label><b>Albert Einstein says:</b><label>
                     </div>
-                    <div>
-                        <b>Albert Einstein says:</b><br>
+                    <div class="row">
                         E = mc^2
                     </div>
                 </div>
-                <div id="messege4" class="messege">
-                    <div>
-                        <img class="avatarpic" src="../images/useravatar.png">
+            </div>
+
+            <div class="row">
+                <img class="col-md-1 avatarpic" src="../images/useravatar.png">
+                <div class="col-md-3">
+                    <div class="row">
+                        <label><b>Bill Gates says:</b><label>
                     </div>
-                    <div>
-                        <b>Bill Gates says:</b><br>
+                    <div class="row">
                         I think 64 bytes should be enough for everyone
                     </div>
                 </div>
-                <div id="messege5" class="messege">
-                    <div>
-                        <img class="avatarpic" src="../images/useravatar.png">
+            </div>
+
+            <div class="row">
+                <img class="col-md-1 avatarpic" src="../images/useravatar.png">
+                <div class="col-md-2">
+                    <div class="row">
+                        <label><b>Frodo says:</b><label>
                     </div>
-                    <div>
-                        <b>Frodo says:</b><br>
+                    <div class="row">
                         My Precious
                     </div>
                 </div>
             </div>
         </article>
     </section>
-
 </div>
 </body>
 </html>

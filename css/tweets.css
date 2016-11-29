@@ -1,12 +1,12 @@
 #text-area {
-    margin-top: 1%;
     display: inline-block;
-    padding-top: 5%;
+    width: 90vw;
 }
 
 .avatarpic {
-    width: 3vw;
-    height: 3vw;
+    width: 6.8vw;
+    height: 3.8vw;
+    margin-bottom: 2vw;
 }
 
 .messege div{

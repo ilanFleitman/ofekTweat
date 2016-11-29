@@ -8,147 +8,213 @@
     <link rel="stylesheet" type="text/css" href="../css/users.css">
 </head>
 <body>
-<div id="container">
-    <header>
-        <div id="nav">
-            <div id="nav-left-side">
+<header class="navbar navbar-default navbar-color">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="row">
+            <div class="navbar-left col-md-offset-1 col-md-2 move-nav">
                 <img src="../images/ofek.png" id="ofek-logo">
-                <button id="headline-twitter" class="headline-link add-text-shedow"><a href="tweets.html">Ofek Twitter</a></button>
+                <button id="headline-twitter" class="headline-link add-text-shedow"><a href="tweets.html">Ofek
+                    Twitter</a></button>
             </div>
-            <div id="nav-right-side">
+            <div class="navbar-left col-md-offset-7">
                 <button class="headline-link add-text-shedow"><a href="users.html">Users</a></button>
                 <button class="headline-link add-text-shedow"><a href="tweets.html">Sign up</a></button>
                 <button class="headline-link add-text-shedow"><a href="tweets.html">Sign in</a></button>
             </div>
         </div>
-    </header>
-    <section>
-        <div id="wrapper">
-            <div class="align-inline-block">
-                Filter by <input id="filter" type="text" placeholder="user name"/>
-            </div>
-            <div class="align-inline-block">
-                <button id="ok">ok</button>
-            </div>
-            <div>
-                <div id="articale" class="align-inline-block">
-                    <article>
-                        <div id="articale-inside">
-                            <div id="freind1" class="freind">
-                                <div>
-                                    <img class="avatarpic" src="../images/useravatar.png">
-                                </div>
-                                <div>
-                                    <button>follow</button>
-                                </div>
-                                <div>
-                                    Marty McFly
-                                </div>
-                            </div>
-                            <div id="freind2" class="freind">
-                                <div>
-                                    <img class="avatarpic" src="../images/useravatar.png">
-                                </div>
-                                <div>
-                                    <button>follow</button>
-                                </div>
-                                <div>
-                                    James Bond
-                                </div>
-                            </div>
-                            <div id="freind3" class="freind">
-                                <div>
-                                    <img class="avatarpic" src="../images/useravatar.png">
-                                </div>
-                                <div>
-                                    <button>unfollow</button>
-                                </div>
-                                <div>
-                                    Janis Joplin
-                                </div>
-                            </div>
-                            <div id="freind4" class="freind">
-                                <div>
-                                    <img class="avatarpic" src="../images/useravatar.png">
-                                </div>
-                                <div>
-                                    <button>follow</button>
-                                </div>
-                                <div>
-                                    Mark Twain
-                                </div>
-                            </div>
-                            <div id="freind5" class="freind">
-                                <div>
-                                    <img class="avatarpic" src="../images/useravatar.png">
-                                </div>
-                                <div>
-                                    <button>unfollow</button>
-                                </div>
-                                <div>
-                                    Albert Einstein
-                                </div>
-                            </div>
-                            <div id="freind6" class="freind">
-                                <div>
-                                    <img class="avatarpic" src="../images/useravatar.png">
-                                </div>
-                                <div>
-                                    <button>follow</button>
-                                </div>
-                                <div>
-                                    Frodo
-                                </div>
-                            </div>
-                            <div id="freind7" class="freind">
-                                <div>
-                                    <img class="avatarpic" src="../images/useravatar.png">
-                                </div>
-                                <div>
-                                    <button>follow</button>
-                                </div>
-                                <div>
-                                    Bill Gates
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div id="aside" class="align-inline-block">
-                    <aside>
-                        <h2>Followees</h2>
-                        <div id="freind8">
-                            <div>
-                                <img class="avatarpic" src="../images/useravatar.png">
-                            </div>
-                            <br>
-                            <div>
-                                <button>unfollow</button>
-                            </div>
-                            <br>
-                            <div>
-                                Albert Einstein
-                            </div>
-                        </div>
-                        <br>
-                        <div id="freind9">
-                            <div>
-                                <img class="avatarpic" src="../images/useravatar.png">
-                            </div>
-                            <br>
-                            <div>
-                                <button>unfollow</button>
-                            </div>
-                            <br>
-                            <div>
-                                Janis Joplin
-                            </div>
-                        </div>
-                    </aside>
-                </div>
+    </div>
+</header>
+<section>
+    <div class="container">
+        <div class="row">
+            <div id="wrapper-all" class="form-inline">
+                <input id="filter" class="form-control col-md-1" type="text" placeholder="user name"/>
+                <button id="ok" class="btn btn-primary">ok</button>
             </div>
         </div>
-    </section>
+        <div class="container">
+        <div class="row">
+            <article class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-2 col-xs-12">
+                            <div class="row">
+                                <div class="freind col-md-12">
+                                    <div class="thumbnail">
+                                        <img class="avatarpic" src="../images/useravatar.png">
+                                        <div class="caption">
+                                            <button class="btn btn-primary">follow</button>
+                                            <p></p>
+                                            <p>Marty McFly</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-12">
+                            <div class="row">
+                                <div class="freind col-md-12">
+                                    <div class="thumbnail">
+                                        <img class="avatarpic" src="../images/useravatar.png">
+                                        <div class="caption">
+                                            <button class="btn btn-primary">follow</button>
+                                            <p></p>
+                                            <p>Marty McFly</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-12">
+                            <div class="row">
+                                <div class="freind col-md-12">
+                                    <div class="thumbnail">
+                                        <img class="avatarpic" src="../images/useravatar.png">
+                                        <div class="caption">
+                                            <button class="btn btn-primary">follow</button>
+                                            <p></p>
+                                            <p>Marty McFly</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-12">
+                            <div class="row">
+                                <div class="freind col-md-12">
+                                    <div class="thumbnail">
+                                        <img class="avatarpic" src="../images/useravatar.png">
+                                        <div class="caption">
+                                            <button class="btn btn-primary">follow</button>
+                                            <p></p>
+                                            <p>Marty McFly</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-12">
+                            <div class="row">
+                                <div class="freind col-md-12">
+                                    <div class="thumbnail">
+                                        <img class="avatarpic" src="../images/useravatar.png">
+                                        <div class="caption">
+                                            <button class="btn btn-primary">follow</button>
+                                            <p></p>
+                                            <p>Marty McFly</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-12">
+                            <div class="row">
+                                <div class="freind col-md-12">
+                                    <div class="thumbnail">
+                                        <img class="avatarpic" src="../images/useravatar.png">
+                                        <div class="caption">
+                                            <button class="btn btn-primary">follow</button>
+                                            <p></p>
+                                            <p>Marty McFly</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-12">
+                            <div class="row">
+                                <div class="freind col-md-12">
+                                    <div class="thumbnail">
+                                        <img class="avatarpic" src="../images/useravatar.png">
+                                        <div class="caption">
+                                            <button class="btn btn-primary">follow</button>
+                                            <p></p>
+                                            <p>Marty McFly</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-12">
+                            <div class="row">
+                                <div class="freind col-md-12">
+                                    <div class="thumbnail">
+                                        <img class="avatarpic" src="../images/useravatar.png">
+                                        <div class="caption">
+                                            <button class="btn btn-primary">follow</button>
+                                            <p></p>
+                                            <p>Marty McFly</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-12">
+                            <div class="row">
+                                <div class="freind col-md-12">
+                                    <div class="thumbnail">
+                                        <img class="avatarpic" src="../images/useravatar.png">
+                                        <div class="caption">
+                                            <button class="btn btn-primary">follow</button>
+                                            <p></p>
+                                            <p>Marty McFly</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-12">
+                            <div class="row">
+                                <div class="freind col-md-12">
+                                    <div class="thumbnail">
+                                        <img class="avatarpic" src="../images/useravatar.png">
+                                        <div class="caption">
+                                            <button class="btn btn-primary">follow</button>
+                                            <p></p>
+                                            <p>Marty McFly</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </article>
+            <aside id="aside" class="col-md-2">
+                <h2>Followees</h2>
+                <div class="col-md-12 col-xs-12">
+                    <div class="row">
+                        <div class="freind col-md-12">
+                            <div class="thumbnail">
+                                <img class="avatarpic" src="../images/useravatar.png">
+                                <div class="caption">
+                                    <button class="btn btn-primary">follow</button>
+                                    <p></p>
+                                    <p>Marty McFly</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="col-md-12 col-xs-12">
+                    <div class="row">
+                        <div class="freind col-md-12">
+                            <div class="thumbnail">
+                                <img class="avatarpic" src="../images/useravatar.png">
+                                <div class="caption">
+                                    <button class="btn btn-primary">follow</button>
+                                    <p></p>
+                                    <p>Marty McFly</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+        </div>
+    </div>
+</section>
 </div>
 </body>
 </html>

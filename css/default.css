@@ -33,7 +33,7 @@
 .headline-link {
     background-color: #0a64eb;
     border: none;
-    height: 3vw;
+    height: 4vw;
 }
 
 #nav button:hover {
@@ -46,7 +46,11 @@ a:visited {
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: #2892ed !important;
 }
 
 #nav-left-side {
@@ -61,4 +65,12 @@ a {
 
 .align-inline-block {
     display: inline-block;
+}
+
+.navbar-color {
+    background-color: #0a64eb;
+}
+
+.move-nav {
+    margin-left: 4vw;
 }
