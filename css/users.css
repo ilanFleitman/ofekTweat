@@ -10,7 +10,7 @@
 
 @keyframes tweetanima {
     0% {
-        border-color: black !important;
+        border-color: #000000 !important;
         margin-top: -40px;
     }
 }
