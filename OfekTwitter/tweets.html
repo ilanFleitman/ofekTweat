@@ -9,94 +9,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<div>
-    <header class="navbar navbar-default testnav navbar-color">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="row">
-                <div class="navbar-left col-md-2 move-nav">
-                    <img src="../images/ofek.png" id="ofek-logo">
-                    <button id="headline-twitter" class="headline-link add-text-shedow"><a href="tweets.html">Ofek
-                        Twitter</a></button>
+<header class="navbar navbar-default navbar-static-top  navbar-color">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="navbar-left col-md-offset-1 col-md-2">
+                <img src="../images/ofek.png" id="ofek-logo">
+                <button id="headline-twitter" class="headline-link add-text-shedow"><a href="tweets.html">Ofek
+                    Twitter</a></button>
+            </div>
+            <div class="navbar-left col-md-offset-6">
+                <button class="headline-link"><a href="users.html">Users</a></button>
+                <button class="headline-link"><a href="tweets.html">Sign up</a></button>
+                <button class="headline-link"><a href="tweets.html">Sign in</a></button>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="container">
+    <div>
+        <div>
+                <textarea id="text-area" class="form-control" rows="3" cols="75"
+                          placeholder="tweet text...."></textarea>
+            <button class="btn btn-md btn-primary pull-right">publish</button>
+        </div>
+    </div>
+    <div class="tweets">
+        <div class="row">
+            <img class="col-md-1 avatarpic" src="../images/useravatar.png">
+            <div class="col-md-2">
+                <div class="row">
+                    <label><b>James Bond says:</b></label>
                 </div>
-                <div class="navbar-left col-md-offset-7">
-                    <button class="headline-link add-text-shedow"><a href="users.html">Users</a></button>
-                    <button class="headline-link add-text-shedow"><a href="tweets.html">Sign up</a></button>
-                    <button class="headline-link add-text-shedow"><a href="tweets.html">Sign in</a></button>
+                <div class="row">
+                    Blabla bla...
                 </div>
             </div>
         </div>
-    </header>
-    <section>
-        <article class="container">
-            <div class="row">
-                <div class="col-md-12">
-                <textarea id="text-area" class="form-control col-md-11" rows="3" cols="75"
-                          placeholder="tweet text...."></textarea>
+        <div class="row">
+            <img class="col-md-1 avatarpic" src="../images/useravatar.png">
+            <div class="col-md-2">
+                <div class="row">
+                    <label><b>James Bond says:</b></label>
+                </div>
+                <div class="row">
+                    Bond, James
                 </div>
             </div>
-            <div class="row">
-                <button class="btn btn-md btn-primary pull-right">publish</button>
-            </div>
-            <div class="row">
-                <img class="col-md-1 avatarpic" src="../images/useravatar.png">
-                <div class="col-md-2">
-                    <div class="row">
-                        <label><b>James Bond says:</b><label>
-                    </div>
-                    <div class="row">
-                        Blabla bla...
-                    </div>
+        </div>
+        <div class="row">
+            <img class="col-md-1 avatarpic" src="../images/useravatar.png">
+            <div class="col-md-2">
+                <div class="row">
+                    <label><b>Albert Einstein says:</b></label>
+                </div>
+                <div class="row">
+                    E = mc^2
                 </div>
             </div>
-            <div class="row">
-                <img class="col-md-1 avatarpic" src="../images/useravatar.png">
-                <div class="col-md-2">
-                    <div class="row">
-                        <label><b>James Bond says:</b><label>
-                    </div>
-                    <div class="row">
-                        Bond, James
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <img class="col-md-1 avatarpic" src="../images/useravatar.png">
-                <div class="col-md-2">
-                    <div class="row">
-                        <label><b>Albert Einstein says:</b><label>
-                    </div>
-                    <div class="row">
-                        E = mc^2
-                    </div>
-                </div>
-            </div>
+        </div>
 
-            <div class="row">
-                <img class="col-md-1 avatarpic" src="../images/useravatar.png">
-                <div class="col-md-3">
-                    <div class="row">
-                        <label><b>Bill Gates says:</b><label>
-                    </div>
-                    <div class="row">
-                        I think 64 bytes should be enough for everyone
-                    </div>
+        <div class="row">
+            <img class="col-md-1 avatarpic" src="../images/useravatar.png">
+            <div class="col-md-3">
+                <div class="row">
+                    <label><b>Bill Gates says:</b></label>
+                </div>
+                <div class="row">
+                    I think 64 bytes should be enough for everyone
                 </div>
             </div>
+        </div>
 
-            <div class="row">
-                <img class="col-md-1 avatarpic" src="../images/useravatar.png">
-                <div class="col-md-2">
-                    <div class="row">
-                        <label><b>Frodo says:</b><label>
-                    </div>
-                    <div class="row">
-                        My Precious
-                    </div>
+        <div class="row">
+            <img class="col-md-1 avatarpic" src="../images/useravatar.png">
+            <div class="col-md-2">
+                <div class="row">
+                    <label><b>Frodo says:</b></label>
+                </div>
+                <div class="row">
+                    My Precious
                 </div>
             </div>
-        </article>
-    </section>
-</div>
+        </div>
+    </div>
+</section>
 </body>
 </html>

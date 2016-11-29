@@ -1,26 +1,9 @@
-#text-area {
-    display: inline-block;
-    width: 90vw;
-}
-
 .avatarpic {
     width: 6.8vw;
     height: 3.8vw;
     margin-bottom: 2vw;
 }
 
-.messege div{
-    display: inline-block;
-    vertical-align: top;
-    font-size: 1vw;
-    margin-top: 1%;
-}
-
-#align-verticly {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-#text-area-button {
-    display: inline-block;
+.tweets {
+    margin-top: 20px;
 }

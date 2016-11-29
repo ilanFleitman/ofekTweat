@@ -1,8 +1,20 @@
 .freind {
-    border-radius: 0.33vw;
+    animation: tweetanima .2s  0s;
 }
+
 
 #aside {
     border: 0.5vw solid #e6e6e6;
     border-radius: 0.33vw;
 }
+
+@keyframes tweetanima {
+    0% {
+        border-color: black !important;
+        margin-top: -40px;
+    }
+}
+
+
+
+
