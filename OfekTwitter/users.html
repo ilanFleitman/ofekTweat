@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../css/default.css">
     <link rel="stylesheet" type="text/css" href="../css/users.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/users.js"></script>
 </head>
 <body>
 <header class="navbar navbar-default navbar-static-top navbar-color">
@@ -30,7 +31,7 @@
         <div class="row">
             <div id="wrapper-all" class="form-group">
                 <div class="col-sm-3">
-                    <input class="form-control" type="text" placeholder="Filter by user name"/>
+                    <input id="filterText" class="form-control" type="text" placeholder="Filter by user name"/>
                 </div>
                 <button id="ok" class="btn btn-primary">ok</button>
             </div>
@@ -38,175 +39,14 @@
         <div class="container">
             <div class="row">
                 <article class="col-md-10">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div class="row">
-                                <div class=" text-center col-md-12">
-                                    <div class="thumbnail">
-                                        <img class="avatarpic" src="../images/useravatar.png">
-                                        <div class="caption">
-                                            <button class="btn btn-primary">follow</button>
-                                            <p></p>
-                                            <p>Marty McFly</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="row">
-                                <div class=" text-center col-md-12">
-                                    <div class="thumbnail">
-                                        <img class="avatarpic" src="../images/useravatar.png">
-                                        <div class="caption">
-                                            <button class="btn btn-primary">follow</button>
-                                            <p></p>
-                                            <p>Janis Joplin</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="row">
-                                <div class=" text-center col-md-12">
-                                    <div class="thumbnail">
-                                        <img class="avatarpic" src="../images/useravatar.png">
-                                        <div class="caption">
-                                            <button class="btn btn-primary">follow</button>
-                                            <p></p>
-                                            <p>Albert Einstein</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="row">
-                                <div class=" text-center col-md-12">
-                                    <div class="thumbnail">
-                                        <img class="avatarpic" src="../images/useravatar.png">
-                                        <div class="caption">
-                                            <button class="btn btn-primary">follow</button>
-                                            <p></p>
-                                            <p>Genghis Khan</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="row">
-                                <div class="text-center col-md-12">
-                                    <div class="thumbnail">
-                                        <img class="avatarpic" src="../images/useravatar.png">
-                                        <div class="caption">
-                                            <button class="btn btn-primary">unfollow</button>
-                                            <p></p>
-                                            <p>Dracula</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="row">
-                                <div class=" text-center col-md-12">
-                                    <div class="thumbnail">
-                                        <img class="avatarpic" src="../images/useravatar.png">
-                                        <div class="caption">
-                                            <button class="btn btn-primary">follow</button>
-                                            <p></p>
-                                            <p>Forest Gump</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="row">
-                                <div class="freind text-center col-md-12">
-                                    <div class="thumbnail">
-                                        <img class="avatarpic" src="../images/useravatar.png">
-                                        <div class="caption">
-                                            <button class="btn btn-primary">follow</button>
-                                            <p></p>
-                                            <p>Caligula</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="row">
-                                <div class="freind text-center col-md-12">
-                                    <div class="thumbnail">
-                                        <img class="avatarpic" src="../images/useravatar.png">
-                                        <div class="caption">
-                                            <button class="btn btn-primary">follow</button>
-                                            <p></p>
-                                            <p>Winnie the Pooh</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="row">
-                                <div class="freind text-center col-md-12">
-                                    <div class="thumbnail">
-                                        <img class="avatarpic" src="../images/useravatar.png">
-                                        <div class="caption">
-                                            <button class="btn btn-primary">follow</button>
-                                            <p></p>
-                                            <p>Obama</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="row">
-                                <div class="freind text-center col-md-12">
-                                    <div class="thumbnail">
-                                        <img class="avatarpic" src="../images/useravatar.png">
-                                        <div class="caption">
-                                            <button class="btn btn-primary">unfollow</button>
-                                            <p></p>
-                                            <p>Henry the 8th</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div id="users" class="row">
+
                     </div>
                 </article>
                 <aside id="aside" class="col-md-2">
                     <h2 class="text-center">Followees</h2>
-                    <div class="row">
-                        <div class=" text-center col-md-12">
-                            <div class="thumbnail">
-                                <img class="avatarpic" src="../images/useravatar.png">
-                                <div class="caption">
-                                    <button class="btn btn-primary">unfollow</button>
-                                    <p></p>
-                                    <p>Dracula</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="freind text-center col-md-12">
-                            <div class="thumbnail">
-                                <img class="avatarpic" src="../images/useravatar.png">
-                                <div class="caption">
-                                    <button class="btn btn-primary">unfollow</button>
-                                    <p></p>
-                                    <p>Henry the 8th</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div id="followes">
+
                     </div>
                 </aside>
             </div>
