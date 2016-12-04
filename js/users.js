@@ -1,6 +1,6 @@
 var users = [
     {id: 0, username: 'Marty McFly', follow: false},
-    {id: 1, username: 'Janis Joplin', follow: true},
+    {id: 1, username: 'Janis Joplin', follow: false},
     {id: 2, username: 'Albert Einstein', follow: false},
     {id: 3, username: 'Genghis Khan', follow: false},
     {id: 4, username: 'Dracula', follow: false},
@@ -10,6 +10,7 @@ var users = [
     {id: 8, username: 'Obama', follow: false},
     {id: 9, username: 'Henry the 8th', follow: false},
 ];
+let deep = true;
 
 function createDiv(clazz) {
     var div = document.createElement('div');
@@ -24,20 +25,21 @@ function createImg() {
     return img;
 }
 
-function putUser(user) {
+function    (user) {
     var usersDiv = document.getElementById('users');
     usersDiv.querySelectorAll("input")[user.id].value = "unfollow";
 
     var followesDiv = document.getElementById('followes');
 
-    var clonedUser = usersDiv.querySelectorAll(".row")[user.id].cloneNode(true);
+
+
+    var clonedUser = usersDiv.querySelectorAll(".row")[user.id].cloneNode(deep);
     clonedUser.id = "";
-    clonedUser.addEventListener('click', function () {
+    clonedUser.querySelector("input").addEventListener('click', function () {
         click(user);
-    })
+    });
 
     followesDiv.appendChild(createDiv("col-md-12").appendChild(clonedUser));
-
 }
 
 function putFollowe(user) {
@@ -137,6 +139,7 @@ window.onload = function () {
     filterText.addEventListener('keyup', function () {
         filterByName(filterText.value);
     });
+
     putUsers(users, 'users', 2);
     putFollowes('followes', 12);
 };
