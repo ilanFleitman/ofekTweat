@@ -22,19 +22,41 @@ function createDiv(clazz) {
     return div;
 }
 
-function eraseElements(parantDiv) {
-    while (parantDiv.hasChildNodes())
-        parantDiv.removeChild(parantDiv.lastChild);
+function createTweet(tweet) {
+    var div = createDiv("row");
 
+    var img = document.createElement('img');
+    img.className = "col-md-1 avatarpic";
+    img.src = "../images/useravatar.png";
+
+    var innerDiv = createDiv('col-md-5');
+    var userNameDiv = createDiv('row');
+    var userName = document.createElement('label');
+    userName.className = tweet.username === myUsername ? "" : "notMe";
+    userName.innerHTML = tweet.username + " says:";
+
+    var tweetText = createDiv('row');
+    tweetText.innerHTML = tweet.text;
+
+    userNameDiv.appendChild(userName);
+    innerDiv.appendChild(userNameDiv);
+    innerDiv.appendChild(tweetText);
+    div.appendChild(img);
+    div.appendChild(innerDiv);
+
+    return div;
 }
 
-var publishTweet = function () {
+
+function publishTweet() {
     var tweetText = document.getElementById('text-area');
     var tweetWithUsername = {username: myUsername, text: encodeHTML(tweetText.value)};
     tweets.push(tweetWithUsername);
     tweetText.value = '';
-    eraseElements(document.getElementById('tweets'));
-    putTweets();
+    var docfrag = document.createDocumentFragment();
+    var getTweetDiv = document.getElementById('tweets');
+    docfrag.appendChild(createTweet(tweetWithUsername));
+    getTweetDiv.appendChild(docfrag);
 }
 
 function putTweets() {
@@ -42,27 +64,7 @@ function putTweets() {
     var getTweetDiv = document.getElementById('tweets');
 
     tweets.forEach(function (tweet) {
-        var div = createDiv("row");
-
-        var img = document.createElement('img');
-        img.className = "col-md-1 avatarpic";
-        img.src = "../images/useravatar.png";
-
-        var innerDiv = createDiv('col-md-5');
-        var userNameDiv = createDiv('row');
-        var userName = document.createElement('label');
-        userName.className = tweet.username === myUsername ? "" : "notMe";
-        userName.innerHTML = tweet.username + " says:";
-
-        var tweetText = createDiv('row');
-        tweetText.innerHTML = tweet.text;
-
-        userNameDiv.appendChild(userName);
-        innerDiv.appendChild(userNameDiv);
-        innerDiv.appendChild(tweetText);
-        div.appendChild(img);
-        div.appendChild(innerDiv);
-        docfrag.appendChild(div);
+        docfrag.appendChild(createTweet(tweet));
     })
 
     getTweetDiv.appendChild(docfrag);

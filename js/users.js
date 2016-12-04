@@ -1,14 +1,14 @@
 var users = [
-    {username: 'Marty McFly', follow: false},
-    {username: 'Janis Joplin', follow: false},
-    {username: 'Albert Einstein', follow: false},
-    {username: 'Genghis Khan', follow: false},
-    {username: 'Dracula', follow: false},
-    {username: 'Forest Gump', follow: false},
-    {username: 'Caligula', follow: false},
-    {username: 'Winnie the Pooh', follow: false},
-    {username: 'Obama', follow: false},
-    {username: 'Henry the 8th', follow: false},
+    {id: 0, username: 'Marty McFly', follow: false},
+    {id: 1, username: 'Janis Joplin', follow: true},
+    {id: 2, username: 'Albert Einstein', follow: false},
+    {id: 3, username: 'Genghis Khan', follow: false},
+    {id: 4, username: 'Dracula', follow: false},
+    {id: 5, username: 'Forest Gump', follow: false},
+    {id: 6, username: 'Caligula', follow: false},
+    {id: 7, username: 'Winnie the Pooh', follow: false},
+    {id: 8, username: 'Obama', follow: false},
+    {id: 9, username: 'Henry the 8th', follow: false},
 ];
 
 function createDiv(clazz) {
@@ -24,10 +24,40 @@ function createImg() {
     return img;
 }
 
-function eraseElements(parantDiv) {
-    while (parantDiv.hasChildNodes())
-        parantDiv.removeChild(parantDiv.lastChild);
+function putUser(user) {
+    var usersDiv = document.getElementById('users');
+    usersDiv.querySelectorAll("input")[user.id].value = "unfollow";
 
+    var followesDiv = document.getElementById('followes');
+
+    var clonedUser = usersDiv.querySelectorAll(".row")[user.id].cloneNode(true);
+    clonedUser.id = "";
+    clonedUser.addEventListener('click', function () {
+        click(user);
+    })
+
+    followesDiv.appendChild(createDiv("col-md-12").appendChild(clonedUser));
+
+}
+
+function putFollowe(user) {
+    var usersDiv = document.getElementById('users');
+    usersDiv.querySelectorAll("input")[user.id].value = "follow";
+
+    var followesDiv = document.getElementById('followes');
+
+    var listOfDivs = followesDiv.querySelectorAll(".row");
+
+    listOfDivs.forEach(function (userDiv) {
+       if (userDiv.querySelectorAll("p")[1].innerHTML === user.username) {
+           userDiv.remove();
+       }
+    });
+}
+
+function click(user) {
+    user.follow = !user.follow;
+    user.follow ? putUser(user) : putFollowe(user);
 }
 
 function putUsers(usersOfTwitter, textToLook, cols) {
@@ -42,16 +72,13 @@ function putUsers(usersOfTwitter, textToLook, cols) {
         var thumbnail = createDiv('thumbnail');
         var caption = createDiv('caption');
 
-        var followBtn = document.createElement('button');
+        var followBtn = document.createElement('input');
+        followBtn.type = "button";
         followBtn.className = 'btn btn-primary';
-        followBtn.innerHTML = user.follow ? "unfollow" : "follow";
-        followBtn.addEventListener('click', function () {
-            user.follow = !user.follow;
-            eraseElements(document.getElementById('users'));
-            eraseElements(document.getElementById('followes'));
-            filterByName(document.getElementById('filterText').value);
-            putFollowes('followes', 12);
-        });
+        followBtn.value = user.follow ? "unfollow" : "follow";
+        followBtn.addEventListener('click',function () {
+            click(user);
+        } );
 
         var space = document.createElement('p');
 
@@ -78,11 +105,31 @@ function putFollowes(textToLook, cols) {
     }), textToLook, cols)
 }
 
+function getIdFromUsers(name) {
+    return users.filter(function (user) {
+        return user.username === name;
+    })[0].id;
+}
+
 function filterByName(userName) {
-   eraseElements(document.getElementById('users'));
-    putUsers(users.filter(function (user) {
+    var usersDiv =  document.getElementById("users").querySelectorAll(".col-md-2");
+
+    var names = users.filter(function (user) {
         return user.username.toLocaleLowerCase().includes(userName.toLowerCase());
-    }), 'users', 2);
+    }).map(function (user) {
+        return user.username;
+    });
+
+    var pList = document.getElementById("users").querySelectorAll("p");
+
+    pList.forEach(function (name) {
+        if (names.includes(name.innerHTML)) {
+            usersDiv[getIdFromUsers(name.innerHTML)].style.display = "block";
+        } else {
+            if (name.innerHTML != "")
+            usersDiv[getIdFromUsers(name.innerHTML)].style.display = "none";
+        }
+    })
 }
 
 window.onload = function () {
