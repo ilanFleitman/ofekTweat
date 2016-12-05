@@ -8,7 +8,7 @@ var tweets = [
     {username: 'James Bond', text: "I'm hungry", type: types["friend"]},
     {username: 'Albert Einstein', text: "E = mc^2", type: types["friend"]},
     {username: 'Bill Gates', text: "I think 64 bytes should be enough for everyone", type: types["friend"]},
-    {username: 'Frodo', text: "My Precious", type: types["friend"]}
+    {username: 'Frodo e', text: "My Precious", type: types["friend"]}
     ];
 
 var myUsername = 'ilan';
@@ -50,48 +50,43 @@ function createTweet(tweet) {
 
 
 function publishTweet() {
-    var tweetText = document.getElementById('text-area');
-    var tweetWithUsername = {username: myUsername, text: tweetText.value, type: types["me"]};
+    var tweetText = $('#text-area');
+    var tweetWithUsername = {username: myUsername, text: tweetText.get(0).value, type: types["me"]};
     tweets.push(tweetWithUsername);
-    tweetText.value = '';
+    tweetText.get(0).value = '';
     var docfrag = document.createDocumentFragment();
-    var getTweetDiv = document.getElementById('tweets');
+    var getTweetDiv =$('#tweets');
     docfrag.appendChild(createTweet(tweetWithUsername));
     getTweetDiv.appendChild(docfrag);
 }
 
 function putTweets() {
-    var docfrag = document.createDocumentFragment();
-    var getTweetDiv = document.getElementById('tweets');
-
     tweets.forEach(function (tweet) {
-        docfrag.appendChild(createTweet(tweet));
+        $("#tweets").appendChild(createTweet(tweet));
     });
-
-    getTweetDiv.appendChild(docfrag);
 }
 
 window.onload = function () {
-    var publishButton = document.getElementById('publish');
-    publishButton.addEventListener('click', publishTweet);
+    var publishButton = $('#publish');
+    publishButton.get(0).addEventListener('click', publishTweet);
     putTweets();
 
     resetsTests();
     test_group("Selectors", function () {
         assert(countLogo(1), "counting one image logo class element");
         assert(countUserNames(5), "counting 5 tweet-username classes under ot-body class");
-        assert(true, "not finding any non-existant ids of elements");
+        assert(testNonExistingId(), "not finding any non-existant ids of elements");
     });
-    test_group("CSS functions", function () {
-        assert(cssGreen(), "css() sets welcome-header to green");
-        assert(true, "addClass() adds papa class");
-        assert(true, "removeClass() adds papa class")
+    test_group("CSS functions e", function () {
+        assert(cssGreen(), "css() sets welcome-header to coral");
+        assert(cssAddClass(), "addClass() adds ilan class");
+        assert(cssRemoveClass(), "removeClass() removes ilan class")
     });
 
     test_group("Functional functions tests", function () {
-        assert(true, "all function counts 1 child for all nav-btn class elements");
-        assert(true, "any function doesn't find a nav-btn class element with no children");
-        assert(true, "all function works with multiple functions")
+        assert(all1(), "all function counts 1 child for all nav-btn class elements");
+        assert(all2(), "any function doesn't find addChildren nav-btn class element with no children");
+        assert(all3(), "all function works with multiple functions")
     });
 
 }

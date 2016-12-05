@@ -10,7 +10,9 @@ var users = [
     {id: 8, username: 'Obama', follow: false},
     {id: 9, username: 'Henry the 8th', follow: false},
 ];
-let deep = true;
+const TWO_ROW = 2;
+const FULL_ROW = 12;
+
 
 function createDiv(clazz) {
     var div = document.createElement('div');
@@ -26,14 +28,13 @@ function createImg() {
 }
 
 function putUser(user) {
-    var usersDiv = document.getElementById('users');
-    usersDiv.querySelectorAll("input")[user.id].value = "unfollow";
+    $("#users input").get(user.id).value = "unfollow";
 
     var followesDiv = document.getElementById('followes');
 
 
 
-    var clonedUser = usersDiv.querySelectorAll(".row")[user.id].cloneNode(deep);
+    var clonedUser =$("#users .row").get(user.id).cloneNode(deep);
     clonedUser.id = "";
     clonedUser.querySelector("input").addEventListener('click', function () {
         click(user);
@@ -43,8 +44,7 @@ function putUser(user) {
 }
 
 function putFollowe(user) {
-    var usersDiv = document.getElementById('users');
-    usersDiv.querySelectorAll("input")[user.id].value = "follow";
+    $("#users input").get(user.id).value = "follow";
 
     var followesDiv = document.getElementById('followes');
 
@@ -114,7 +114,7 @@ function getIdFromUsers(name) {
 }
 
 function filterByName(userName) {
-    var usersDiv =  document.getElementById("users").querySelectorAll(".col-md-2");
+    var usersDiv =  $("#users .col-md-2");
 
     var names = users.filter(function (user) {
         return user.username.toLocaleLowerCase().includes(userName.toLowerCase());
@@ -126,10 +126,10 @@ function filterByName(userName) {
 
     pList.forEach(function (name) {
         if (names.includes(name.innerHTML)) {
-            usersDiv[getIdFromUsers(name.innerHTML)].style.display = "block";
+            usersDiv.get(getIdFromUsers(name.innerHTML)).style.display = "block";
         } else {
             if (name.innerHTML != "")
-            usersDiv[getIdFromUsers(name.innerHTML)].style.display = "none";
+            usersDiv.get(getIdFromUsers(name.innerHTML)).style.display = "none";
         }
     })
 }
@@ -140,6 +140,6 @@ window.onload = function () {
         filterByName(filterText.value);
     });
 
-    putUsers(users, 'users', 2);
-    putFollowes('followes', 12);
+    putUsers(users, 'users', TWO_ROW);
+    putFollowes('followes', FULL_ROW);
 };
