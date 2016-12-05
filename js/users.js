@@ -25,7 +25,7 @@ function createImg() {
     return img;
 }
 
-function    (user) {
+function putUser(user) {
     var usersDiv = document.getElementById('users');
     usersDiv.querySelectorAll("input")[user.id].value = "unfollow";
 
