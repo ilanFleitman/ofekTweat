@@ -77,6 +77,7 @@ window.onload = function () {
         assert(countUserNames(5), "counting 5 tweet-username classes under ot-body class");
         assert(testNonExistingId(), "not finding any non-existant ids of elements");
     });
+
     test_group("CSS functions e", function () {
         assert(cssGreen(), "css() sets welcome-header to coral");
         assert(cssAddClass(), "addClass() adds ilan class");

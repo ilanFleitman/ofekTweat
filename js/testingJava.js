@@ -73,6 +73,7 @@ function cssGreen() {
             return false;
         }
     };
+
     return true;
 }
 

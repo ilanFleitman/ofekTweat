@@ -53,19 +53,26 @@ function expandTree(elements) {
 
 var $ = function (selector) {
     return new OfeckQuery(selector);
-}
+};
 
 function OfeckQuery(query) {
+
     var arrElements = Array.from(document.all);
     let selectors = query.split(" ");
     selectors.forEach(function (selector) {
-        arrElements = selectorFilters[findSelectorType(selector)](arrElements, selector);
-        if (selectors.indexOf(selector) != selectors.length - 1) {
-            arrElements = Array.from(new Set(expandTree(arrElements)));
-        }
+       arrElements =  excuteSelectorOnElemnts(selector, arrElements, selectors);
     });
 
     this.elements = arrElements;
+}
+
+function excuteSelectorOnElemnts(selector, arrElements, selectors) {
+    arrElements = selectorFilters[findSelectorType(selector)](arrElements, selector);
+    if (selectors.indexOf(selector) != selectors.length - 1) {
+        arrElements = Array.from(new Set(expandTree(arrElements)));
+    }
+
+    return arrElements;
 }
 
 OfeckQuery.prototype = {
@@ -133,8 +140,8 @@ OfeckQuery.prototype = {
         var tempElements = [];
         this.elements.forEach(function (elem) {
             var tempNode = elem.cloneNode(deep);
-            tempElements.push(tempNode)
             fn(tempNode);
+            tempElements.push(tempNode)
         });
         return tempElements;
     }
@@ -144,13 +151,12 @@ OfeckQuery.prototype = {
         for (var indexE = 0; indexE < this.elements.length; indexE++) {
             var elemSuccess = true;
             for (var index = 0; index < fn.length; index++) {
-                elemSuccess = true;
                 if (!(fn[index](this.elements[indexE]))) {
                     elemSuccess = false;
                     break;
                 }
             }
-            ;
+
             if (elemSuccess) {
                 return true;
             }
@@ -166,15 +172,14 @@ OfeckQuery.prototype = {
                     return false;
                 }
             }
-            ;
         }
-        ;
         return true;
     }
     ,
 
     filter: function (...fn) {
         var newElements = [];
+
         this.elements.forEach(function (elem) {
             let suitible = true;
             fn.forEach(function (func) {
@@ -191,4 +196,4 @@ OfeckQuery.prototype = {
         query.elements = newElements;
         return query;
     }
-}
+};
