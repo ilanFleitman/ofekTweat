@@ -1,15 +1,18 @@
-var users = [
-    {id: 0, username: 'Marty McFly', follow: false},
-    {id: 1, username: 'Janis Joplin', follow: false},
-    {id: 2, username: 'Albert Einstein', follow: false},
-    {id: 3, username: 'Genghis Khan', follow: false},
-    {id: 4, username: 'Dracula', follow: false},
-    {id: 5, username: 'Forest Gump', follow: false},
-    {id: 6, username: 'Caligula', follow: false},
-    {id: 7, username: 'Winnie the Pooh', follow: false},
-    {id: 8, username: 'Obama', follow: false},
-    {id: 9, username: 'Henry the 8th', follow: false},
-];
+// var users = [
+//     {id: 0, username: 'Marty McFly', follow: false},
+//     {id: 1, username: 'Janis Joplin', follow: false},
+//     {id: 2, username: 'Albert Einstein', follow: false},
+//     {id: 3, username: 'Genghis Khan', follow: false},
+//     {id: 4, username: 'Dracula', follow: false},
+//     {id: 5, username: 'Forest Gump', follow: false},
+//     {id: 6, username: 'Caligula', follow: false},
+//     {id: 7, username: 'Winnie the Pooh', follow: false},
+//     {id: 8, username: 'Obama', follow: false},
+//     {id: 9, username: 'Henry the 8th', follow: false},
+// ];
+
+var users = [];
+
 const TWO_ROW = 2;
 const FULL_ROW = 12;
 
@@ -28,14 +31,14 @@ function createImg() {
 }
 
 function putUser(user) {
-    $("#users input").get(user.id).value = "unfollow";
+    $("#users input").get(user.idd).value = "unfollow";
 
     var followesDiv = document.getElementById('followes');
 
 
 
-    var clonedUser =$("#users .row").get(user.id).cloneNode(deep);
-    clonedUser.id = "";
+    var clonedUser =$("#users .row").get(user.idd).cloneNode(deep);
+    clonedUser.idd = "";
     clonedUser.querySelector("input").addEventListener('click', function () {
         click(user);
     });
@@ -44,7 +47,7 @@ function putUser(user) {
 }
 
 function putFollowe(user) {
-    $("#users input").get(user.id).value = "follow";
+    $("#users input").get(user.idd).value = "follow";
 
     var followesDiv = document.getElementById('followes');
 
@@ -110,7 +113,7 @@ function putFollowes(textToLook, cols) {
 function getIdFromUsers(name) {
     return users.filter(function (user) {
         return user.username === name;
-    })[0].id;
+    })[0].idd;
 }
 
 function filterByName(userName) {
@@ -135,11 +138,20 @@ function filterByName(userName) {
 }
 
 window.onload = function () {
+    axios.get('http://10.103.50.193:8080/users').then(function (response) {
+        users = response.data;
+    }).then(function () {
+        var index = 0;
+        users.map(function (user) {
+            user.idd = index++;
+            user.follow = false;
+        });
+        putUsers(users, 'users', TWO_ROW);
+        putFollowes('followes', FULL_ROW);
+    });
+
     var filterText = document.getElementById('filterText');
     filterText.addEventListener('keyup', function () {
         filterByName(filterText.value);
     });
-
-    putUsers(users, 'users', TWO_ROW);
-    putFollowes('followes', FULL_ROW);
 };

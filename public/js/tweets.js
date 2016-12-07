@@ -1,15 +1,20 @@
+
 var types = {
     me: "",
     friend: "notMe"
 };
 
-var tweets = [
-    {username: 'James Bond', text: "Blablabla...", type: types["friend"]},
-    {username: 'James Bond', text: "I'm hungry", type: types["friend"]},
-    {username: 'Albert Einstein', text: "E = mc^2", type: types["friend"]},
-    {username: 'Bill Gates', text: "I think 64 bytes should be enough for everyone", type: types["friend"]},
-    {username: 'Frodo e', text: "My Precious", type: types["friend"]}
-    ];
+// var tweets = [
+//     {username: 'James Bond', text: "Blablabla...", type: types["friend"]},
+//     {username: 'James Bond', text: "I'm hungry", type: types["friend"]},
+//     {username: 'Albert Einstein', text: "E = mc^2", type: types["friend"]},
+//     {username: 'Bill Gates', text: "I think 64 bytes should be enough for everyone", type: types["friend"]},
+//     {username: 'Frodo e', text: "My Precious", type: types["friend"]}
+//     ];
+var tweets = [];
+
+
+
 
 var myUsername = 'ilan';
 
@@ -31,7 +36,7 @@ function createTweet(tweet) {
     var innerDiv = createDiv('col-md-5');
     var userNameDiv = createDiv('row');
     var userName = document.createElement('label');
-    userName.className =tweet.type;
+    userName.className = "";
     var userNameText = document.createTextNode(tweet.username + " says:");
 
     var tweetText = createDiv('row');
@@ -69,7 +74,27 @@ function putTweets() {
 window.onload = function () {
     var publishButton = $('#publish');
     publishButton.get(0).addEventListener('click', publishTweet);
-    putTweets();
+    axios.get('http://10.103.50.193:8080/tweets').then(function (response) {
+        tweets = response.data;
+    }).then(function () {
+        let fn = function (tweet) {
+            return axios.get('http://10.103.50.193:8080/users/' + tweet.user).then(function (response) {
+                tweet.username = response.data[0].username;
+            });
+        };
+
+        axios.all(tweets.map(fn)).then(putTweets);;
+
+
+        // tweets.forEach(function (tweet) {
+        //     usernames.push(axios.get('http://10.103.50.193:8080/users/' + tweet.user).then(function (response) {
+        //         tweet.username = response.data[0].username;
+        //     }));
+        // });
+        //
+        // axios.all(usernames).then(putTweets);
+    });
+
 
     resetsTests();
     test_group("Selectors", function () {

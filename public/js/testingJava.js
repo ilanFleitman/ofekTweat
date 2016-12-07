@@ -66,10 +66,10 @@ function testNonExistingId() {
 }
 
 function cssGreen() {
-    $('a').css("color","coral");
+    $('a').css("color","white");
     var styles = $('a').getAttribute("style");
     for (var style of styles) {
-        if (style.split(":")[1] != " coral;") {
+        if (style.split(":")[1] != " white;") {
             return false;
         }
     };
