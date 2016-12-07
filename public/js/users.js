@@ -1,27 +1,23 @@
-// var users = [
-//     {id: 0, username: 'Marty McFly', follow: false},
-//     {id: 1, username: 'Janis Joplin', follow: false},
-//     {id: 2, username: 'Albert Einstein', follow: false},
-//     {id: 3, username: 'Genghis Khan', follow: false},
-//     {id: 4, username: 'Dracula', follow: false},
-//     {id: 5, username: 'Forest Gump', follow: false},
-//     {id: 6, username: 'Caligula', follow: false},
-//     {id: 7, username: 'Winnie the Pooh', follow: false},
-//     {id: 8, username: 'Obama', follow: false},
-//     {id: 9, username: 'Henry the 8th', follow: false},
-// ];
-
 var users = [];
+
+let currUser = [];
 
 const TWO_ROW = 2;
 const FULL_ROW = 12;
 
+var following = [];
 
 function createDiv(clazz) {
     var div = document.createElement('div');
     div.className = clazz;
     return div;
 }
+
+let findUser  = function (followee) {
+    return axios.get('http://localhost:2020/users/' + followee).then(function (response) {
+        following.push({username: response.data.username, _id: response.data._id, idd: response.data.idd});
+    });
+};
 
 function createImg() {
     var img = document.createElement('img');
@@ -31,38 +27,56 @@ function createImg() {
 }
 
 function putUser(user) {
-    $("#users input").get(user.idd).value = "unfollow";
+    axios.post('/users/addFollowing', {currId: currUser._id, addFollowing: user._id}).then(function () {
+        $("#users input").get(user.idd).value = "unfollow";
+        currUser.following.push(user._id);
 
-    var followesDiv = document.getElementById('followes');
+        var followesDiv = document.getElementById('followes');
 
 
+        var clonedUser = $("#users .row").get(user.idd).cloneNode(deep);
+        clonedUser.idd = "";
+        clonedUser.querySelector("input").addEventListener('click', function () {
+            click(user);
+        });
 
-    var clonedUser =$("#users .row").get(user.idd).cloneNode(deep);
-    clonedUser.idd = "";
-    clonedUser.querySelector("input").addEventListener('click', function () {
-        click(user);
+        followesDiv.appendChild(createDiv("col-md-12").appendChild(clonedUser));
+
     });
+}
 
-    followesDiv.appendChild(createDiv("col-md-12").appendChild(clonedUser));
+function deleteFollowing(following, userId) {
+    for (var followingIndex = 0; followingIndex < following.length; followingIndex++) {
+        if (following[followingIndex] === userId) {
+            following.splice(followingIndex, 1);
+            break;
+        }
+    }
+
+    return following;
 }
 
 function putFollowe(user) {
-    $("#users input").get(user.idd).value = "follow";
+    axios.post('/users/deleteFollowing', {currId: currUser._id, deleteFollowing: user._id}).then(function () {
+        $("#users input").get(user.idd).value = "follow";
+        currUser.following = deleteFollowing(currUser.following, user._id);
 
-    var followesDiv = document.getElementById('followes');
+        var followesDiv = document.getElementById('followes');
 
-    var listOfDivs = followesDiv.querySelectorAll(".row");
+        var listOfDivs = followesDiv.querySelectorAll(".row");
 
-    listOfDivs.forEach(function (userDiv) {
-       if (userDiv.querySelectorAll("p")[1].innerHTML === user.username) {
-           userDiv.remove();
-       }
+        listOfDivs.forEach(function (userDiv) {
+            if (userDiv.querySelectorAll("p")[1].innerHTML === user.username) {
+                userDiv.remove();
+            }
+        });
+
+
     });
 }
 
 function click(user) {
-    user.follow = !user.follow;
-    user.follow ? putUser(user) : putFollowe(user);
+    !currUser.following.includes(user._id) ? putUser(user) : putFollowe(user);
 }
 
 function putUsers(usersOfTwitter, textToLook, cols) {
@@ -80,10 +94,10 @@ function putUsers(usersOfTwitter, textToLook, cols) {
         var followBtn = document.createElement('input');
         followBtn.type = "button";
         followBtn.className = 'btn btn-primary';
-        followBtn.value = user.follow ? "unfollow" : "follow";
-        followBtn.addEventListener('click',function () {
+        followBtn.value = currUser.following.includes(user._id) ? "unfollow" : "follow";
+        followBtn.addEventListener('click', function () {
             click(user);
-        } );
+        });
 
         var space = document.createElement('p');
 
@@ -104,10 +118,8 @@ function putUsers(usersOfTwitter, textToLook, cols) {
     getUsersDiv.appendChild(docfrag);
 }
 
-function putFollowes(textToLook, cols) {
-    putUsers(users.filter(function (user) {
-        return user.follow;
-    }), textToLook, cols)
+function putFollowes(users, textToLook, cols) {
+    putUsers(users, textToLook, cols)
 }
 
 function getIdFromUsers(name) {
@@ -117,7 +129,7 @@ function getIdFromUsers(name) {
 }
 
 function filterByName(userName) {
-    var usersDiv =  $("#users .col-md-2");
+    var usersDiv = $("#users .col-md-2");
 
     var names = users.filter(function (user) {
         return user.username.toLocaleLowerCase().includes(userName.toLowerCase());
@@ -132,22 +144,23 @@ function filterByName(userName) {
             usersDiv.get(getIdFromUsers(name.innerHTML)).style.display = "block";
         } else {
             if (name.innerHTML != "")
-            usersDiv.get(getIdFromUsers(name.innerHTML)).style.display = "none";
+                usersDiv.get(getIdFromUsers(name.innerHTML)).style.display = "none";
         }
     })
 }
 
+
+
 window.onload = function () {
-    axios.get('http://10.103.50.193:8080/users').then(function (response) {
+    axios.get('http://localhost:2020/users').then(function (response) {
         users = response.data;
+        currUser = response.data[0];
     }).then(function () {
-        var index = 0;
-        users.map(function (user) {
-            user.idd = index++;
-            user.follow = false;
-        });
         putUsers(users, 'users', TWO_ROW);
-        putFollowes('followes', FULL_ROW);
+        axios.all(currUser.following.map(findUser)).then(function () {
+            putFollowes(following, 'followes', FULL_ROW);
+        });
+
     });
 
     var filterText = document.getElementById('filterText');
