@@ -120,7 +120,7 @@ app.put('/users/addUser', function (req, res) {
     fs.readFile('./public/json/users.json', function (err, content) {
         res.writeHead(200, {'Content-Type': 'text/json'});
         let users = JSON.parse(content.toString());
-        users.push({_id: users.length, username: req.body.username, password: req.body.password, following: [], idd: users.length})
+        users.push({_id: users.length.toString(), username: req.body.username, password: req.body.password, following: [], idd: users.length})
         fs.writeFile('./public/json/users.json',JSON.stringify(users));
         res.end(JSON.stringify(users), 'utf-8');
     })
