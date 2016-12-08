@@ -1,13 +1,6 @@
-var types = {
-    me: "",
-    friend: "notMe"
-};
 
-var tweets = [];
-
-
-var myUserId = 'cc707c95-f1e3-4caf-906d-f9dd1f394b99';
-var myUserName = "ilan";
+var myUserId = '';
+var myUserName = "";
 
 function createDiv(clazz) {
     var div = document.createElement('div');
@@ -26,7 +19,10 @@ function createTweet(tweet) {
     var innerDiv = createDiv('col-md-5');
     var userNameDiv = createDiv('row');
     var userName = document.createElement('label');
-    userName.className = "";
+    if (myUserName != tweet.username) {
+        userName.className = "notMe";
+    }
+
     var userNameText = document.createTextNode(tweet.username + " says:");
 
     var tweetText = createDiv('row');
@@ -72,40 +68,37 @@ function putTweets() {
 window.onload = function () {
     var publishButton = $('#publish');
     publishButton.get(0).addEventListener('click', publishTweet);
-    axios.get('http://localhost:2020/tweets').then(function (response) {
-        tweets = response.data;
+    axios.get('/loggedUser').then(function (response) {
+        myUserId = response.data._id;
+        myUserName = response.data.username;
     }).then(function () {
-        axios.all(tweets.map(findUserByTweet)).then(function () {
-            putTweets();
-            resetsTests();
-            test_group("Selectors", function () {
-                assert(countLogo(1), "counting one image logo class element");
-                assert(countUserNames(5), "counting 5 tweet-username classes under ot-body class");
-                assert(testNonExistingId(), "not finding any non-existant ids of elements");
+        axios.get('http://localhost:2020/tweets').then(function (response) {
+            tweets = response.data;
+        }).then(function () {
+            axios.all(tweets.map(findUserByTweet)).then(function () {
+                putTweets();
+                resetsTests();
+                test_group("Selectors", function () {
+                    assert(countLogo(1), "counting one image logo class element");
+                    assert(countUserNames(59), "counting 5 tweet-username classes under ot-body class");
+                    assert(testNonExistingId(), "not finding any non-existant ids of elements");
+                });
+
+                test_group("CSS functions e", function () {
+                    assert(cssGreen(), "css() sets welcome-header to coral");
+                    assert(cssAddClass(), "addClass() adds ilan class");
+                    assert(cssRemoveClass(), "removeClass() removes ilan class")
+                });
+
+                test_group("Functional functions tests", function () {
+                    assert(all1(), "all function counts 1 child for all nav-btn class elements");
+                    assert(all2(), "any function doesn't find addChildren nav-btn class element with no children");
+                    assert(all3(), "all function works with multiple functions")
+                });
             });
 
-            test_group("CSS functions e", function () {
-                assert(cssGreen(), "css() sets welcome-header to coral");
-                assert(cssAddClass(), "addClass() adds ilan class");
-                assert(cssRemoveClass(), "removeClass() removes ilan class")
-            });
-
-            test_group("Functional functions tests", function () {
-                assert(all1(), "all function counts 1 child for all nav-btn class elements");
-                assert(all2(), "any function doesn't find addChildren nav-btn class element with no children");
-                assert(all3(), "all function works with multiple functions")
-            });
         });
-        ;
-
-
-        // tweets.forEach(function (tweet) {
-        //     usernames.push(axios.get('http://10.103.50.193:8080/users/' + tweet.user).then(function (response) {
-        //         tweet.username = response.data[0].username;
-        //     }));
-        // });
-        //
-        // axios.all(usernames).then(putTweets);
-    });
-
+    }).catch(function (err) {
+        window.location.assign("/signIn");
+    })
 };

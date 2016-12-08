@@ -13,8 +13,15 @@ function createDiv(clazz) {
     return div;
 }
 
-let findUser  = function (followee) {
+let findUser = function (followee) {
     return axios.get('http://localhost:2020/users/' + followee).then(function (response) {
+        following.push({username: response.data.username, _id: response.data._id, idd: response.data.idd});
+    });
+};
+
+let findUserById = function (id) {
+    var user = {};
+    axios.get('http://localhost:2020/users/' + id).then(function (response) {
         following.push({username: response.data.username, _id: response.data._id, idd: response.data.idd});
     });
 };
@@ -26,13 +33,13 @@ function createImg() {
     return img;
 }
 
-function putUser(user) {
-    axios.post('/users/addFollowing', {currId: currUser._id, addFollowing: user._id}).then(function () {
+function putFollowe(user) {
+    axios.post('/users/addFollowing', {currId: currUser._id, addFollowing: user._id})
+        .then(function () {
         $("#users input").get(user.idd).value = "unfollow";
         currUser.following.push(user._id);
 
         var followesDiv = document.getElementById('followes');
-
 
         var clonedUser = $("#users .row").get(user.idd).cloneNode(deep);
         clonedUser.idd = "";
@@ -41,7 +48,6 @@ function putUser(user) {
         });
 
         followesDiv.appendChild(createDiv("col-md-12").appendChild(clonedUser));
-
     });
 }
 
@@ -56,7 +62,7 @@ function deleteFollowing(following, userId) {
     return following;
 }
 
-function putFollowe(user) {
+function deleteFollowe(user) {
     axios.post('/users/deleteFollowing', {currId: currUser._id, deleteFollowing: user._id}).then(function () {
         $("#users input").get(user.idd).value = "follow";
         currUser.following = deleteFollowing(currUser.following, user._id);
@@ -76,7 +82,7 @@ function putFollowe(user) {
 }
 
 function click(user) {
-    !currUser.following.includes(user._id) ? putUser(user) : putFollowe(user);
+    !currUser.following.includes(user._id) ? putFollowe(user) : deleteFollowe(user);
 }
 
 function putUsers(usersOfTwitter, textToLook, cols) {
@@ -84,35 +90,37 @@ function putUsers(usersOfTwitter, textToLook, cols) {
     var getUsersDiv = document.getElementById(textToLook);
 
     usersOfTwitter.forEach(function (user) {
-        var div = createDiv("col-md-" + cols + "");
-        var img = createImg();
-        var innerRow = createDiv('row');
-        var centerDiv = createDiv('text-center col-md-12');
-        var thumbnail = createDiv('thumbnail');
-        var caption = createDiv('caption');
+        if (user._id != currUser._id) {
+            var div = createDiv("col-md-" + cols + "");
+            var img = createImg();
+            var innerRow = createDiv('row');
+            var centerDiv = createDiv('text-center col-md-12');
+            var thumbnail = createDiv('thumbnail');
+            var caption = createDiv('caption');
 
-        var followBtn = document.createElement('input');
-        followBtn.type = "button";
-        followBtn.className = 'btn btn-primary';
-        followBtn.value = currUser.following.includes(user._id) ? "unfollow" : "follow";
-        followBtn.addEventListener('click', function () {
-            click(user);
-        });
+            var followBtn = document.createElement('input');
+            followBtn.type = "button";
+            followBtn.className = 'btn btn-primary';
+            followBtn.value = currUser.following.includes(user._id) ? "unfollow" : "follow";
+            followBtn.addEventListener('click', function () {
+                click(user);
+            });
 
-        var space = document.createElement('p');
+            var space = document.createElement('p');
 
-        var userName = document.createElement('p');
-        userName.innerHTML = user.username;
+            var userName = document.createElement('p');
+            userName.innerHTML = user.username;
 
-        caption.appendChild(followBtn);
-        caption.appendChild(space);
-        caption.appendChild(userName);
-        thumbnail.appendChild(img);
-        thumbnail.appendChild(caption);
-        centerDiv.appendChild(thumbnail);
-        innerRow.appendChild(centerDiv);
-        div.appendChild(innerRow);
-        docfrag.appendChild(div);
+            caption.appendChild(followBtn);
+            caption.appendChild(space);
+            caption.appendChild(userName);
+            thumbnail.appendChild(img);
+            thumbnail.appendChild(caption);
+            centerDiv.appendChild(thumbnail);
+            innerRow.appendChild(centerDiv);
+            div.appendChild(innerRow);
+            docfrag.appendChild(div);
+        }
     });
 
     getUsersDiv.appendChild(docfrag);
@@ -150,21 +158,25 @@ function filterByName(userName) {
 }
 
 
-
 window.onload = function () {
-    axios.get('http://localhost:2020/users').then(function (response) {
-        users = response.data;
-        currUser = response.data[0];
+    axios.get('/loggedUser').then(function (response) {
+        currUser = response.data;
     }).then(function () {
-        putUsers(users, 'users', TWO_ROW);
-        axios.all(currUser.following.map(findUser)).then(function () {
-            putFollowes(following, 'followes', FULL_ROW);
+        axios.get('http://localhost:2020/users').then(function (response) {
+            users = response.data;
+        }).then(function () {
+            putUsers(users, 'users', TWO_ROW);
+            axios.all(currUser.following.map(findUser)).then(function () {
+                putFollowes(following, 'followes', FULL_ROW);
+            });
+
         });
 
-    });
-
-    var filterText = document.getElementById('filterText');
-    filterText.addEventListener('keyup', function () {
-        filterByName(filterText.value);
+        var filterText = document.getElementById('filterText');
+        filterText.addEventListener('keyup', function () {
+            filterByName(filterText.value);
+        });
+    }).catch(function (err) {
+        window.location.assign("/signIn");
     });
 };

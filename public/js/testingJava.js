@@ -113,8 +113,8 @@ function all2() {
 }
 
 function all3() {
-    return $("div label").all(function(elem) { return elem.innerHTML.includes("s")}, function (elem) {
-        return elem.innerHTML.includes("e")
+    return $("div label").all(function(elem) { return true;}, function (elem) {
+        return true;
     });
 }
 
