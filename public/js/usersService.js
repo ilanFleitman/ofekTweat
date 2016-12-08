@@ -12,3 +12,7 @@ function getAllUsersService() {
 function addFollowingService() {
     return axios.post('/users/addFollowing', {currId: currUser._id, addFollowing: user._id});
 }
+
+function deleteFollowingService() {
+    return  axios.post('/users/deleteFollowing', {currId: currUser._id, deleteFollowing: user._id});
+}

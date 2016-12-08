@@ -74,11 +74,11 @@ window.onload = function () {
     document.querySelector("#logOut").addEventListener('click', logout);
     var publishButton = $('#publish');
     publishButton.get(0).addEventListener('click', publishTweet);
-    axios.get('/loggedUser').then(function (response) {
+    getLoggedUser().then(function (response) {
         myUserId = response.data._id;
         myUserName = response.data.username;
     }).then(function () {
-        axios.get('http://localhost:2020/tweets').then(function (response) {
+        getAllTweetsService().then(function (response) {
             tweets = response.data;
         }).then(function () {
             axios.all(tweets.map(findUserByTweet)).then(function () {

@@ -54,22 +54,21 @@ function deleteFollowing(following, userId) {
     return following;
 }
 
+function isUsernameToDelete(userDiv, user) {
+    return userDiv.querySelectorAll("p")[1].innerHTML === user.username;
+}
+
 function deleteFollowe(user) {
-    axios.post('/users/deleteFollowing', {currId: currUser._id, deleteFollowing: user._id}).then(function () {
+   deleteFollowingService().then(function () {
         $("#users input").get(user.idd).value = "follow";
         currUser.following = deleteFollowing(currUser.following, user._id);
-
         var followesDiv = document.getElementById('followes');
-
         var listOfDivs = followesDiv.querySelectorAll(".row");
-
         listOfDivs.forEach(function (userDiv) {
-            if (userDiv.querySelectorAll("p")[1].innerHTML === user.username) {
+            if (isUsernameToDelete(userDiv, user)) {
                 userDiv.remove();
             }
         });
-
-
     });
 }
 
@@ -85,13 +84,13 @@ function putUsers(usersOfTwitter, textToLook, cols) {
     var getUsersDiv = document.getElementById(textToLook);
 
     usersOfTwitter.forEach(function (user) {
-        addUserToFragment(user, docfrag);
+        addUserToFragment(user, docfrag, cols);
     });
 
     getUsersDiv.appendChild(docfrag);
 }
 
-function addUserToFragment(user, fregment) {
+function addUserToFragment(user, docfrag, cols ) {
     if (isCurrUser(user)) {
         var div = createDiv("col-md-" + cols + "");
         var img = createImg();
@@ -137,15 +136,12 @@ function getIdFromUsers(name) {
 
 function filterByName(userName) {
     var usersDiv = $("#users .col-md-2");
-
     var names = users.filter(function (user) {
         return user.username.toLocaleLowerCase().includes(userName.toLowerCase());
     }).map(function (user) {
         return user.username;
     });
-
     var pList = document.getElementById("users").querySelectorAll("p");
-
     pList.forEach(function (name) {
         if (names.includes(name.innerHTML)) {
             usersDiv.get(getIdFromUsers(name.innerHTML)).style.display = "block";
@@ -167,6 +163,7 @@ function putFolloweesOfUser() {
         putFollowes(following, 'followes', FULL_ROW);
     });
 }
+
 function putLoggedUser(response) {
     currUser = response.data;
 }
@@ -174,6 +171,7 @@ function putLoggedUser(response) {
 function putAllUsers(response) {
     users = response.data;
 }
+
 function getUsers() {
     getAllUsersService().then(putAllUsers).then(function () {
         putUsers(users, 'users', TWO_ROW);
