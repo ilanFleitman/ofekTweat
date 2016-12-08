@@ -1,6 +1,13 @@
 /**
  * Created by Jbt on 12/8/2016.
  */
+
+function logout() {
+    axios.post('/logOut').then(function () {
+        window.location.assign("/signIn");
+    })
+}
+
 function load() {
     var btnSignIn = document.querySelector("#signIn");
 

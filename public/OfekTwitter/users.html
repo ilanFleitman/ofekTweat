@@ -8,8 +8,9 @@
     <link rel="stylesheet" type="text/css" href="css/users.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../node_modules/axios/dist/axios.js"></script>
-    <script src="js/users.js"></script>
+    <script src="js/usersService.js"></script>
     <script src="js/OfekQuery.js"></script>
+    <script src="js/users.js"></script>
 </head>
 <body>
 <header class="navbar navbar-default navbar-static-top navbar-color">
@@ -20,10 +21,9 @@
                 <button id="headline-twitter" class="headline-link"><a href="/">Ofek
                     Twitter</a></button>
             </div>
-            <div class="navbar-left col-md-offset-8">
+            <div class="navbar-left col-md-offset-7">
                 <button class="headline-link"><a href="/usersPage">Users</a></button>
-                <button class="headline-link"><a href="/signUp">Sign up</a></button>
-                <button class="headline-link"><a href="/signIn">Sign in</a></button>
+                <button class="headline-link" id="logOut">log outs</button>
             </div>
         </div>
     </div>

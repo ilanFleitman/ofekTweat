@@ -19,13 +19,6 @@ let findUser = function (followee) {
     });
 };
 
-let findUserById = function (id) {
-    var user = {};
-    axios.get('http://localhost:2020/users/' + id).then(function (response) {
-        following.push({username: response.data.username, _id: response.data._id, idd: response.data.idd});
-    });
-};
-
 function createImg() {
     var img = document.createElement('img');
     img.className = "avatarpic";
@@ -34,21 +27,20 @@ function createImg() {
 }
 
 function putFollowe(user) {
-    axios.post('/users/addFollowing', {currId: currUser._id, addFollowing: user._id})
-        .then(function () {
-        $("#users input").get(user.idd).value = "unfollow";
-        currUser.following.push(user._id);
+   addFollowingService().then(function () {
+            $("#users input").get(user.idd).value = "unfollow";
+            currUser.following.push(user._id);
 
-        var followesDiv = document.getElementById('followes');
+            var followesDiv = document.getElementById('followes');
 
-        var clonedUser = $("#users .row").get(user.idd).cloneNode(deep);
-        clonedUser.idd = "";
-        clonedUser.querySelector("input").addEventListener('click', function () {
-            click(user);
+            var clonedUser = $("#users .row").get(user.idd).cloneNode(deep);
+            clonedUser.idd = "";
+            clonedUser.querySelector("input").addEventListener('click', function () {
+                click(user);
+            });
+
+            followesDiv.appendChild(createDiv("col-md-12").appendChild(clonedUser));
         });
-
-        followesDiv.appendChild(createDiv("col-md-12").appendChild(clonedUser));
-    });
 }
 
 function deleteFollowing(following, userId) {
@@ -85,45 +77,52 @@ function click(user) {
     !currUser.following.includes(user._id) ? putFollowe(user) : deleteFollowe(user);
 }
 
+function isCurrUser(user) {
+    return user._id != currUser._id;
+}
 function putUsers(usersOfTwitter, textToLook, cols) {
     var docfrag = document.createDocumentFragment();
     var getUsersDiv = document.getElementById(textToLook);
 
     usersOfTwitter.forEach(function (user) {
-        if (user._id != currUser._id) {
-            var div = createDiv("col-md-" + cols + "");
-            var img = createImg();
-            var innerRow = createDiv('row');
-            var centerDiv = createDiv('text-center col-md-12');
-            var thumbnail = createDiv('thumbnail');
-            var caption = createDiv('caption');
-
-            var followBtn = document.createElement('input');
-            followBtn.type = "button";
-            followBtn.className = 'btn btn-primary';
-            followBtn.value = currUser.following.includes(user._id) ? "unfollow" : "follow";
-            followBtn.addEventListener('click', function () {
-                click(user);
-            });
-
-            var space = document.createElement('p');
-
-            var userName = document.createElement('p');
-            userName.innerHTML = user.username;
-
-            caption.appendChild(followBtn);
-            caption.appendChild(space);
-            caption.appendChild(userName);
-            thumbnail.appendChild(img);
-            thumbnail.appendChild(caption);
-            centerDiv.appendChild(thumbnail);
-            innerRow.appendChild(centerDiv);
-            div.appendChild(innerRow);
-            docfrag.appendChild(div);
-        }
+        addUserToFragment(user, docfrag);
     });
 
     getUsersDiv.appendChild(docfrag);
+}
+
+function addUserToFragment(user, fregment) {
+    if (isCurrUser(user)) {
+        var div = createDiv("col-md-" + cols + "");
+        var img = createImg();
+        var innerRow = createDiv('row');
+        var centerDiv = createDiv('text-center col-md-12');
+        var thumbnail = createDiv('thumbnail');
+        var caption = createDiv('caption');
+
+        var followBtn = document.createElement('input');
+        followBtn.type = "button";
+        followBtn.className = 'btn btn-primary';
+        followBtn.value = currUser.following.includes(user._id) ? "unfollow" : "follow";
+        followBtn.addEventListener('click', function () {
+            click(user);
+        });
+
+        var space = document.createElement('p');
+
+        var userName = document.createElement('p');
+        userName.innerHTML = user.username;
+
+        caption.appendChild(followBtn);
+        caption.appendChild(space);
+        caption.appendChild(userName);
+        thumbnail.appendChild(img);
+        thumbnail.appendChild(caption);
+        centerDiv.appendChild(thumbnail);
+        innerRow.appendChild(centerDiv);
+        div.appendChild(innerRow);
+        docfrag.appendChild(div);
+    }
 }
 
 function putFollowes(users, textToLook, cols) {
@@ -157,26 +156,39 @@ function filterByName(userName) {
     })
 }
 
+function logout() {
+    axios.post('/logOut').then(function () {
+        window.location.assign("/signIn");
+    })
+}
+
+function putFolloweesOfUser() {
+    axios.all(currUser.following.map(findUser)).then(function () {
+        putFollowes(following, 'followes', FULL_ROW);
+    });
+}
+function putLoggedUser(response) {
+    currUser = response.data;
+}
+
+function putAllUsers(response) {
+    users = response.data;
+}
+function getUsers() {
+    getAllUsersService().then(putAllUsers).then(function () {
+        putUsers(users, 'users', TWO_ROW);
+        putFolloweesOfUser();
+    });
+
+    var filterText = document.getElementById('filterText');
+    filterText.addEventListener('keyup', function () {
+        filterByName(filterText.value);
+    });
+}
 
 window.onload = function () {
-    axios.get('/loggedUser').then(function (response) {
-        currUser = response.data;
-    }).then(function () {
-        axios.get('http://localhost:2020/users').then(function (response) {
-            users = response.data;
-        }).then(function () {
-            putUsers(users, 'users', TWO_ROW);
-            axios.all(currUser.following.map(findUser)).then(function () {
-                putFollowes(following, 'followes', FULL_ROW);
-            });
-
-        });
-
-        var filterText = document.getElementById('filterText');
-        filterText.addEventListener('keyup', function () {
-            filterByName(filterText.value);
-        });
-    }).catch(function (err) {
+    document.querySelector("#logOut").addEventListener('click', logout)
+    getLoggedUser().then(putLoggedUser).then(getUsers).catch(function (err) {
         window.location.assign("/signIn");
     });
 };

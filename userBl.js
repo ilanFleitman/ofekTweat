@@ -61,8 +61,8 @@ function getAllUsers() {
     return users;
 }
 
-function addUser(id, username, passeword, idd) {
-    users.push({_id: id, username: username, passeword: passeword, following: [], idd: idd});
+function addUser(username, passeword) {
+    users.push({_id: users.length.toString(), username: username, password: passeword, following: [], idd: users.length});
     return users;
 }
 

@@ -1,4 +1,3 @@
-
 var myUserId = '';
 var myUserName = "";
 
@@ -65,7 +64,14 @@ function putTweets() {
     });
 }
 
+function logout() {
+    axios.post('/logOut').then(function () {
+        window.location.assign("/signIn");
+    })
+}
+
 window.onload = function () {
+    document.querySelector("#logOut").addEventListener('click', logout);
     var publishButton = $('#publish');
     publishButton.get(0).addEventListener('click', publishTweet);
     axios.get('/loggedUser').then(function (response) {
