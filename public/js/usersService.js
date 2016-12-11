@@ -9,11 +9,11 @@ function getAllUsersService() {
     return axios.get('/users');
 }
 
-function addFollowingService() {
+function addFollowingService(currUser, user) {
     return axios.post('/users/addFollowing', {currId: currUser._id, addFollowing: user._id});
 }
 
-function deleteFollowingService() {
+function deleteFollowingService(currUser, user) {
     return  axios.post('/users/deleteFollowing', {currId: currUser._id, deleteFollowing: user._id});
 }
 
