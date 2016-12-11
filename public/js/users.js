@@ -153,7 +153,7 @@ function filterByName(userName) {
 }
 
 function logout() {
-    axios.post('/logOut').then(function () {
+    logOutService().then(function () {
         window.location.assign("/signIn");
     })
 }

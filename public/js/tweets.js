@@ -39,7 +39,7 @@ function createTweet(tweet) {
 }
 
 let findUserByTweet = function (tweet) {
-    return axios.get('http://localhost:2020/users/' + tweet.user).then(function (response) {
+    return findUserByTweetsService.then(function (response) {
         tweet.username = response.data.username;
     });
 };
@@ -47,7 +47,7 @@ let findUserByTweet = function (tweet) {
 
 function publishTweet() {
     let tweetText = $('#text-area');
-    axios.put('/tweets', {text: tweetText.get(0).value, user: myUserId}).then(function () {
+        putTweetsService(tweetText.get(0).value, myUserId).then(function () {
         let tweetWithUsername = {text: tweetText.get(0).value, user: myUserId, username: myUserName};
         tweets.push(tweetWithUsername);
         tweetText.get(0).value = '';
@@ -65,7 +65,7 @@ function putTweets() {
 }
 
 function logout() {
-    axios.post('/logOut').then(function () {
+    logOutService().then(function () {
         window.location.assign("/signIn");
     })
 }

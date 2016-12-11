@@ -8,3 +8,15 @@ function getLoggedUser() {
 function getAllTweetsService() {
     return axios.get('http://localhost:2020/tweets');
 }
+
+function findUserByTweetsService() {
+    return  axios.get('http://localhost:2020/users/' + tweet.user);
+}
+
+function putTweetsService(text, id) {
+    return  axios.put('/tweets', {text: tweetText.get(0).value, user: myUserId})
+}
+
+function logOutService() {
+    return axios.post('/logOut');
+}

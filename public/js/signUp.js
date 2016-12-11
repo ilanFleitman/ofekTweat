@@ -5,12 +5,6 @@ function createUser(userName, password) {
     })
 }
 
-function logout() {
-    axios.post('/logOut').then(function () {
-        window.location.assign("/signIn");
-    })
-}
-
 function load() {
     var btnSignUp = document.querySelector("#signUp");
     btnSignUp.addEventListener('click', function () {

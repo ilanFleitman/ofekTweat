@@ -16,3 +16,7 @@ function addFollowingService() {
 function deleteFollowingService() {
     return  axios.post('/users/deleteFollowing', {currId: currUser._id, deleteFollowing: user._id});
 }
+
+function logOutService() {
+    return axios.post('/logOut');
+}
