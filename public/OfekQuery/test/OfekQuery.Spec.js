@@ -22,7 +22,7 @@ describe('Query selector', function () {
             var list = $('ol li').getAttribute('class');
             var able = true;
             for (var clazz of list) {
-                if (clazz != 'shalom') {
+                if (clazz !== 'shalom') {
                     able = false;
                     break;
                 }
@@ -30,7 +30,7 @@ describe('Query selector', function () {
             expect(able).toBeTruthy();
         });
 
-        it('should be abele to get attribute', function () {
+        it('should be able to get attribute', function () {
             var olVars = $('ol').getAttribute("id");
             var able = true;
             for (var ol of olVars) {
@@ -97,7 +97,7 @@ describe('Query selector', function () {
 
     describe("check appand child function", function () {
         it("should be able to add li to ol", function () {
-            var list = $('ol').appendChild(document.createElement('li'));
+            $('ol').appendChild(document.createElement('li'));
             var listLength = $('ol li').count();
             expect(listLength).toBe(7);
         });
@@ -127,6 +127,7 @@ describe('Query selector', function () {
             var result = $("ul li").any(function (elem) {
                 return elem.className = "ilan";
             });
+
             expect(result).toBeTruthy();
         });
 
@@ -147,7 +148,7 @@ describe('Query selector', function () {
             }).count();
 
             expect(filteredLikesLength).toBe(3);
-        })
+        });
 
         it("check filter with more then one function", function () {
             var filteredLikesLength = $("ol li").filter(function (elem) {
@@ -157,16 +158,43 @@ describe('Query selector', function () {
             }).count();
 
             expect(filteredLikesLength).toBe(1);
+        });
+        it("should return 0 when empty array.", function () {
+            var filteredLikesLength = $("asdsad").filter(function (elem) {
+                return elem.innerHTML.includes('l');
+            }, function (elem) {
+                return elem.innerHTML.includes('S');
+            }).count();
+
+            expect(filteredLikesLength).toBe(0);
         })
-    })
+    });
 
     describe("check map function", function () {
-        it("check map function with one function that add world", function () {
+        it("check map function with one function that adds world", function () {
             var mappedLikes = $('ol li').map(function (elem) {
                 elem.innerHTML += " world";
             });
+
             var able = true;
             for (var mappedLike of mappedLikes) {
+                if (!mappedLike.innerHTML.includes("world")) {
+                    able = false;
+                    break;
+                }
+            }
+
+            expect(able).toBeTruthy();
+        });
+    });
+
+    describe("check each function", function () {
+        it("check each function with one function that add world", function () {
+            $('ol li').each(function (elem) {
+                elem.innerHTML += " world";
+            });
+            var able = true;
+            for (var mappedLike of $('ol li').elements) {
                 if (!mappedLike.innerHTML.includes("world")) {
                     able = false;
                     break;

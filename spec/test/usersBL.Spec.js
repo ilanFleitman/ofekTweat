@@ -5,26 +5,26 @@ describe("test usersBL", function () {
     });
 
     describe("test function get user by its id", function () {
-        it("test function if user id is 10 should return user ilan", function () {
+        it("should return a user with id:10 when user is ilan", function () {
             var ilanUser = {
                 _id: '10',
                 username: 'ilan',
                 password: '1234',
-                following: ['11',
+                following: [
                     'c28dd406-3595-42f6-8e36-15d4cd495293',
-                    '5e07631e-3974-47f8-a89c-bb41ce1e0e3d']
+                    '5e07631e-3974-47f8-a89c-bb41ce1e0e3d','11']
             };
 
             var user = userBL.userById("10");
-            expect(user._id).toBe(ilanUser._id);
-            expect(user.username).toBe(ilanUser.username);
-        })
+
+            expect(user).toEqual(ilanUser);
+        });
 
         it("test function if user id is fake should return undefined", function () {
             var user = userBL.userById("fake id");
             expect(user).toBeUndefined();
         })
-    })
+    });
 
     describe("test get users who follow me", function () {
         it("check ilan user follwing list should be 1 user", function () {
@@ -37,7 +37,7 @@ describe("test usersBL", function () {
             var users  = userBL.usersFolowingId("fake id");
             expect(users.length).toBe(0);
         })
-    })
+    });
 
     describe("test function the gets the user with the right password and username", function () {
         it("check username ilan and password 1234 if exist should return ilan", function () {
@@ -50,9 +50,9 @@ describe("test usersBL", function () {
             var user = userBL.findUserNameByUsernameAndPassword("ilan", "123");
             expect(user).toBeNull();
         })
-    })
+    });
 
-    describe("test function the check if the user with the right password and username is exist", function () {
+    describe("test function the check if the user with the right password and username exists", function () {
         it("check username ilan and password 1234 if exist should return true", function () {
             var exist = userBL.findUserNameByUsernameAndPassword("ilan", "1234");
             expect(exist).toBeTruthy();
@@ -63,7 +63,4 @@ describe("test usersBL", function () {
             expect(exist).toBeFalsy();
         })
     })
-
-
-
 });

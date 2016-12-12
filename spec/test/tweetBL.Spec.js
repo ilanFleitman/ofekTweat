@@ -9,19 +9,18 @@ describe("test tweetBL", function () {
     });
 
 
-    describe("test get all tweet of the specific user", function () {
-        it("check number of tweets of user id 10", function (done) {
+    describe("test get all tweets of the specific user", function () {
+        it("check number of tweets of user id 10", function () {
             var tweets = tweetBl.getAllUserTweets("10");
+
             expect(tweets.length).toBe(8);
-            done();
         });
 
-        it("check if there is no user id return 0", function (done) {
+        it("check if there is no user id return 0", function () {
             var tweets = tweetBl.getAllUserTweets("this is fake id");
             expect(tweets.length).toBe(0);
-            done();
         })
-    })
+    });
 
     describe("test get all tweets", function () {
         it("get all tweets", function (done) {
