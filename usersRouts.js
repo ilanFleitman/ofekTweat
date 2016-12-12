@@ -13,7 +13,12 @@ function isUserExist(req) {
 function routs(app) {
     app.get('/users', function (req, res) {
         res.writeHead(200, {'Content-Type': 'text/json'});
-        res.end(JSON.stringify(userBL.getAllUsers()), 'utf-8');
+        let users = [];
+        userBL.getAllUsers().then(function (response) {
+            users = response;
+            res.end(JSON.stringify(users), 'utf-8');
+        });
+
     });
 
     app.get('/users/:id', function (req, res) {

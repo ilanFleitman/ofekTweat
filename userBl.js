@@ -1,8 +1,5 @@
 var dataReader = require('./dataReader');
 var users = [];
-dataReader.users().then(function (response) {
-    users = response;
-})
 
 function getUserById(id) {
     for (let user of users) {
@@ -58,11 +55,23 @@ function deleteFollowing(id, userId) {
 }
 
 function getAllUsers() {
-    return users;
+    return new Promise(function (resolve) {
+            dataReader.users().then(function (response) {
+                users = response;
+                resolve(users);
+            })
+        }
+    );
 }
 
-function addUser(username, passeword) {
-    users.push({_id: users.length.toString(), username: username, password: passeword, following: [], idd: users.length});
+function addUser(username, password) {
+    users.push({
+        _id: users.length.toString(),
+        username: username,
+        password: password,
+        following: [],
+        idd: users.length
+    });
     return users;
 }
 

@@ -14,7 +14,12 @@ function routs(app) {
 
         app.get('/tweets', function (req, res) {
             res.writeHead(200, {'Content-Type': 'text/json'});
-            res.end(JSON.stringify(tweetsBL.getAllTweets()), 'utf-8');
+            let tweets = [];
+            tweetsBL.getAllTweets().then(function (response) {
+                tweets = response;
+                res.end(JSON.stringify(tweets), 'utf-8');
+            })
+
         });
 
         app.put('/tweets', function (req, res) {

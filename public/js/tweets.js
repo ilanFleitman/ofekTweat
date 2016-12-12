@@ -48,13 +48,13 @@ let findUserByTweet = function (tweet) {
 };
 
 function publishTweet() {
-    let tweetText = $('#text-area');
+        var tweetText = $('#text-area');
         putTweetsService(tweetText.get(0).value, myUserId).then(function () {
-        let tweetWithUsername = {text: tweetText.get(0).value, user: myUserId, username: myUserName};
+        var tweetWithUsername = {text: tweetText.get(0).value, user: myUserId, username: myUserName};
         tweets.push(tweetWithUsername);
         tweetText.get(0).value = '';
-        let docfrag = document.createDocumentFragment();
-        let getTweetDiv = $('#tweets');
+        var docfrag = document.createDocumentFragment();
+        var getTweetDiv = $('#tweets');
         docfrag.appendChild(createTweetInDocument(tweetWithUsername));
         getTweetDiv.appendChild(docfrag);
     });
@@ -190,7 +190,7 @@ describe("test tweets page", function () {
 
     describe("check load function", function () {
         it("check load", function () {
-            spyGet.and.returnValue()
+            spyGet.and.returnValue();
         })
     })
 });
